@@ -20,6 +20,7 @@ body {
   overflow: hidden;
   font-family: Georgia, "Times New Roman", serif;
   color: #697064;
+
   background:
     radial-gradient(circle at 15% 15%, rgba(246,214,222,.30), transparent 25%),
     radial-gradient(circle at 85% 80%, rgba(215,232,247,.34), transparent 28%),
@@ -33,6 +34,7 @@ body {
   min-height: 650px;
   overflow: hidden;
 }
+
 
 /* =========================
    TESTATA
@@ -52,10 +54,16 @@ body {
 
 .names {
   margin: 0;
-  font-family: "Snell Roundhand", "Brush Script MT", cursive;
+
+  font-family:
+    "Snell Roundhand",
+    "Brush Script MT",
+    cursive;
+
   font-size: clamp(42px, 11vw, 60px);
   font-weight: 400;
   line-height: 1;
+
   color: #68705f;
 }
 
@@ -76,6 +84,7 @@ body {
   color: #d89ca4;
 }
 
+
 /* =========================
    BUSTA
 ========================= */
@@ -90,6 +99,7 @@ body {
   top: 52%;
 
   transform: translate(-50%, -50%);
+
   perspective: 1200px;
 }
 
@@ -105,6 +115,7 @@ body {
   border-radius: 50%;
 
   background: rgba(60,50,40,.18);
+
   filter: blur(14px);
 
   z-index: -5;
@@ -118,10 +129,12 @@ body {
 
   border-radius: 4px;
 
-  box-shadow: 0 14px 32px rgba(70,60,50,.16);
+  box-shadow:
+    0 14px 32px rgba(70,60,50,.16);
 
   z-index: 1;
 }
+
 
 /* =========================
    CARTONCINO
@@ -142,7 +155,8 @@ body {
 
   text-align: center;
 
-  box-shadow: 0 8px 25px rgba(60,50,40,.12);
+  box-shadow:
+    0 8px 25px rgba(60,50,40,.12);
 
   transform:
     translateY(225px)
@@ -168,7 +182,10 @@ body {
 .card-names {
   margin: 20px 0 18px;
 
-  font-family: "Snell Roundhand", "Brush Script MT", cursive;
+  font-family:
+    "Snell Roundhand",
+    "Brush Script MT",
+    cursive;
 
   font-size: 40px;
   line-height: 1;
@@ -203,6 +220,7 @@ body {
   letter-spacing: .5px;
 }
 
+
 /* =========================
    PATTA
 ========================= */
@@ -213,7 +231,12 @@ body {
 
   background: #eee5d8;
 
-  clip-path: polygon(0 0, 100% 0, 50% 72%);
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      50% 72%
+    );
 
   transform-origin: top center;
 
@@ -238,8 +261,10 @@ body {
   font-size: 17px;
 
   color: #aab7a2;
+
   opacity: .65;
 }
+
 
 /* =========================
    FRONTE BUSTA
@@ -256,175 +281,413 @@ body {
 
 .front-left {
   background: #f7f0e5;
-  clip-path: polygon(0 0, 51% 58%, 0 100%);
+
+  clip-path:
+    polygon(
+      0 0,
+      51% 58%,
+      0 100%
+    );
 }
 
 .front-right {
   background: #f4ebdf;
-  clip-path: polygon(100% 0, 49% 58%, 100% 100%);
+
+  clip-path:
+    polygon(
+      100% 0,
+      49% 58%,
+      100% 100%
+    );
 }
 
 .front-bottom {
   background: #faf3e9;
-  clip-path: polygon(0 100%, 50% 51%, 100% 100%);
-}
 
-/* ==========================================
-   NASTRO ORIZZONTALE
-
-   Diviso in due metà.
-   Così non "svanisce": si sfila dalla busta.
-========================================== */
-
-.ribbon-left,
-.ribbon-right {
-  position: absolute;
-
-  top: 105px;
-
-  width: 50%;
-  height: 13px;
-
-  z-index: 15;
-
-  background:
-    linear-gradient(
-      to bottom,
-      #ecc8ca,
-      #dca9ae 48%,
-      #edc9ca
+  clip-path:
+    polygon(
+      0 100%,
+      50% 51%,
+      100% 100%
     );
-
-  box-shadow: 0 2px 4px rgba(80,50,50,.10);
 }
 
-.ribbon-left {
-  left: 0;
-  transform-origin: right center;
-}
 
-.ribbon-right {
-  right: 0;
-  transform-origin: left center;
-}
+/* ==================================================
+   FIOCCO SVG
+================================================== */
 
-/* =========================
-   FIOCCO
-========================= */
-
-.bow {
+.bow-button {
   position: absolute;
 
-  left: 50%;
-  top: 111px;
+  width: 350px;
+  height: 230px;
 
-  width: 120px;
-  height: 170px;
-
-  transform: translate(-50%, -24px);
+  left: 0;
+  top: 0;
 
   z-index: 20;
 
   cursor: pointer;
+
   -webkit-tap-highlight-color: transparent;
 }
 
-/* NODO */
-
-.knot {
+.bow-svg {
   position: absolute;
 
-  left: 50%;
-  top: 24px;
+  width: 350px;
+  height: 230px;
 
-  width: 21px;
-  height: 18px;
+  left: 0;
+  top: 0;
 
-  transform: translateX(-50%);
-
-  border-radius: 45%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #efc9cb,
-      #d79fa5
-    );
-
-  box-shadow:
-    inset 2px 2px 3px rgba(255,255,255,.4),
-    0 2px 4px rgba(80,50,50,.15);
-
-  z-index: 5;
+  overflow: visible;
 }
 
-/* ASOLE */
 
-.loop {
-  position: absolute;
+/* nastro orizzontale */
 
-  top: 12px;
+.ribbon-horizontal {
+  fill: none;
 
-  width: 48px;
-  height: 31px;
+  stroke: #dda9ae;
 
-  border: 9px solid #dfadb2;
+  stroke-width: 13;
 
-  z-index: 3;
+  stroke-linecap: round;
+
+  filter: url(#ribbonShadow);
 }
 
-.loop-left {
-  right: 60px;
 
-  border-radius: 70% 35% 65% 40%;
+/* asole */
 
-  transform: rotate(14deg);
+.loop-path {
+  fill: none;
 
-  transform-origin: right center;
+  stroke: #e0adb2;
+
+  stroke-width: 12;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  filter: url(#ribbonShadow);
 }
 
-.loop-right {
-  left: 60px;
 
-  border-radius: 35% 70% 40% 65%;
+/* code */
 
-  transform: rotate(-14deg);
+.tail-path {
+  fill: none;
 
-  transform-origin: left center;
+  stroke: #dfaab0;
+
+  stroke-width: 12;
+
+  stroke-linecap: round;
+
+  filter: url(#ribbonShadow);
 }
 
-/* CODE */
 
-.tail {
-  position: absolute;
+/* nodo */
 
-  top: 34px;
+.knot-shape {
+  fill: url(#knotGradient);
 
-  width: 13px;
-  height: 125px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #d59da3,
-      #edc3c6 50%,
-      #d39ba1
-    );
-
-  transform-origin: top;
-
-  z-index: 2;
+  filter: url(#ribbonShadow);
 }
 
-.tail-left {
-  right: 59px;
-  transform: rotate(23deg);
+
+/* ==================================================
+   ANIMAZIONE SVG
+================================================== */
+
+/*
+  FASE 1:
+  piccolo movimento di tensione
+*/
+
+.scene.tension #bowGroup {
+  animation:
+    bowTension .55s forwards ease-in-out;
 }
 
-.tail-right {
-  left: 59px;
-  transform: rotate(-23deg);
+@keyframes bowTension {
+
+  0% {
+    transform: translate(0,0);
+  }
+
+  45% {
+    transform: translate(-1px,0);
+  }
+
+  100% {
+    transform: translate(1px,1px);
+  }
 }
+
+
+/*
+  FASE 2:
+  tiriamo il capo destro
+*/
+
+.scene.pull #rightTail {
+  animation:
+    pullTail 1.35s forwards
+    cubic-bezier(.3,.05,.25,1);
+}
+
+@keyframes pullTail {
+
+  0% {
+    transform:
+      translate(0,0)
+      rotate(0deg);
+  }
+
+  30% {
+    transform:
+      translate(8px,5px)
+      rotate(-3deg);
+  }
+
+  65% {
+    transform:
+      translate(35px,13px)
+      rotate(-8deg);
+  }
+
+  100% {
+    transform:
+      translate(92px,24px)
+      rotate(-14deg);
+  }
+}
+
+
+/*
+  L'asola destra contemporaneamente
+  viene risucchiata verso il nodo.
+*/
+
+.scene.pull #rightLoop {
+  transform-origin: 177px 112px;
+
+  animation:
+    shrinkRightLoop 1.35s forwards
+    cubic-bezier(.35,.05,.2,1);
+}
+
+@keyframes shrinkRightLoop {
+
+  0% {
+    transform:
+      translate(0,0)
+      scaleX(1);
+    opacity: 1;
+  }
+
+  35% {
+    transform:
+      translate(-5px,1px)
+      scaleX(.78);
+    opacity: 1;
+  }
+
+  70% {
+    transform:
+      translate(-11px,2px)
+      scaleX(.40);
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(-15px,3px)
+      scaleX(.06);
+    opacity: 0;
+  }
+}
+
+
+/*
+  Nodo sotto tensione.
+*/
+
+.scene.pull #knot {
+  transform-origin: 175px 112px;
+
+  animation:
+    knotPull 1.35s forwards ease-in-out;
+}
+
+@keyframes knotPull {
+
+  0% {
+    transform: scale(1);
+  }
+
+  55% {
+    transform:
+      scale(.90,1.08)
+      rotate(-3deg);
+  }
+
+  100% {
+    transform:
+      scale(.78,1)
+      rotate(-5deg);
+  }
+}
+
+
+/*
+  FASE 3:
+  una volta sfilata l'asola,
+  il fiocco collassa.
+*/
+
+.scene.release #leftLoop {
+  transform-origin: 173px 112px;
+
+  animation:
+    releaseLeftLoop 1s forwards
+    cubic-bezier(.2,.6,.3,1);
+}
+
+@keyframes releaseLeftLoop {
+
+  0% {
+    transform:
+      scaleX(1)
+      rotate(0deg);
+    opacity: 1;
+  }
+
+  45% {
+    transform:
+      translate(-13px,5px)
+      scaleX(.65)
+      rotate(8deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(-55px,19px)
+      scaleX(.18)
+      rotate(19deg);
+    opacity: 0;
+  }
+}
+
+
+.scene.release #knot {
+  animation:
+    knotRelease .65s forwards ease-out;
+}
+
+@keyframes knotRelease {
+
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(9px)
+      scale(.45);
+  }
+}
+
+
+/*
+  Le code diventano due lembi
+  di nastro sciolto.
+*/
+
+.scene.release #leftTail {
+  transform-origin: 172px 113px;
+
+  animation:
+    looseLeftTail 1s forwards ease-out;
+}
+
+@keyframes looseLeftTail {
+
+  0% {
+    transform:
+      translate(0,0)
+      rotate(0deg);
+  }
+
+  100% {
+    transform:
+      translate(-38px,25px)
+      rotate(17deg);
+  }
+}
+
+
+.scene.release #rightTail {
+  animation:
+    looseRightTail 1s forwards ease-out;
+}
+
+@keyframes looseRightTail {
+
+  0% {
+    transform:
+      translate(92px,24px)
+      rotate(-14deg);
+  }
+
+  100% {
+    transform:
+      translate(115px,36px)
+      rotate(-20deg);
+  }
+}
+
+
+/*
+  FASE 4:
+  tutto il nastro ormai sciolto
+  viene sfilato dalla busta.
+*/
+
+.scene.ribbon-away #bowGroup {
+  animation:
+    ribbonLeaves 1.05s forwards
+    cubic-bezier(.5,0,.7,.4);
+}
+
+@keyframes ribbonLeaves {
+
+  0% {
+    opacity: 1;
+    transform: translate(0,0);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(150px,35px)
+      rotate(-5deg);
+  }
+}
+
 
 /* =========================
    INDICAZIONE
@@ -453,12 +716,13 @@ body {
 
   font-size: 26px;
 
-  animation: tapAnimation 1.7s infinite;
+  animation:
+    tapAnimation 1.7s infinite;
 }
 
 @keyframes tapAnimation {
 
-  0%, 100% {
+  0%,100% {
     transform: translateY(0);
   }
 
@@ -467,276 +731,28 @@ body {
   }
 }
 
-/* =====================================================
-   ANIMAZIONE FIOCCO
-
-   PRIMA viene tirata la coda destra
-===================================================== */
-
-.scene.pull-tail .tail-right {
-  animation: pullRightTail .8s forwards ease-in-out;
-}
-
-.scene.pull-tail .knot {
-  animation: knotTension .8s forwards ease-in-out;
-}
-
-@keyframes pullRightTail {
-
-  0% {
-    transform:
-      rotate(-23deg)
-      translate(0,0);
-  }
-
-  35% {
-    transform:
-      rotate(-30deg)
-      translate(8px,8px);
-  }
-
-  100% {
-    transform:
-      rotate(-47deg)
-      translate(46px,42px);
-  }
-}
-
-@keyframes knotTension {
-
-  0% {
-    transform:
-      translateX(-50%)
-      scale(1);
-  }
-
-  45% {
-    transform:
-      translateX(-46%)
-      scale(.92,1.08)
-      rotate(-5deg);
-  }
-
-  100% {
-    transform:
-      translateX(-43%)
-      scale(.82,1.05)
-      rotate(-8deg);
-  }
-}
-
-/* =====================================================
-   POI L'ASOLA DESTRA SI SFILA
-===================================================== */
-
-.scene.pull-loop .loop-right {
-  animation: pullRightLoop .9s forwards ease-in-out;
-}
-
-@keyframes pullRightLoop {
-
-  0% {
-    width: 48px;
-
-    transform:
-      rotate(-14deg)
-      translate(0,0);
-
-    opacity: 1;
-  }
-
-  45% {
-    width: 28px;
-
-    transform:
-      rotate(-5deg)
-      translate(18px,6px);
-
-    opacity: 1;
-  }
-
-  100% {
-    width: 7px;
-
-    transform:
-      rotate(12deg)
-      translate(73px,15px)
-      scaleY(.55);
-
-    opacity: 0;
-  }
-}
-
-/* =====================================================
-   IL NODO CEDE E L'ALTRA ASOLA SI APRE
-===================================================== */
-
-.scene.bow-open .loop-left {
-  animation: openLeftLoop .8s forwards ease-out;
-}
-
-.scene.bow-open .knot {
-  animation: releaseKnot .65s forwards ease-out;
-}
-
-.scene.bow-open .tail-left {
-  animation: fallLeftTail .9s forwards ease-in;
-}
-
-@keyframes openLeftLoop {
-
-  0% {
-    width: 48px;
-    transform: rotate(14deg);
-    opacity: 1;
-  }
-
-  50% {
-    width: 34px;
-
-    transform:
-      translate(-20px,8px)
-      rotate(28deg)
-      scaleY(.8);
-
-    opacity: .9;
-  }
-
-  100% {
-    width: 12px;
-
-    transform:
-      translate(-70px,28px)
-      rotate(55deg)
-      scaleY(.55);
-
-    opacity: 0;
-  }
-}
-
-@keyframes releaseKnot {
-
-  0% {
-    opacity: 1;
-
-    transform:
-      translateX(-43%)
-      scale(.82,1.05)
-      rotate(-8deg);
-  }
-
-  100% {
-    opacity: 0;
-
-    transform:
-      translate(-70%,25px)
-      scale(.35)
-      rotate(-35deg);
-  }
-}
-
-@keyframes fallLeftTail {
-
-  0% {
-    transform: rotate(23deg);
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translate(-65px,85px)
-      rotate(68deg);
-
-    opacity: 0;
-  }
-}
-
-/* coda destra completa il movimento */
-
-.scene.bow-open .tail-right {
-  animation: finishRightTail .8s forwards ease-in;
-}
-
-@keyframes finishRightTail {
-
-  0% {
-    transform:
-      rotate(-47deg)
-      translate(46px,42px);
-
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translate(95px,100px)
-      rotate(-80deg);
-
-    opacity: 0;
-  }
-}
-
-/* =====================================================
-   IL NASTRO ORIZZONTALE SI SFILA
-===================================================== */
-
-.scene.ribbon-away .ribbon-left {
-  animation: ribbonLeftAway .8s forwards ease-in;
-}
-
-.scene.ribbon-away .ribbon-right {
-  animation: ribbonRightAway .8s forwards ease-in;
-}
-
-@keyframes ribbonLeftAway {
-
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateX(-190px);
-    opacity: 0;
-  }
-}
-
-@keyframes ribbonRightAway {
-
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateX(190px);
-    opacity: 0;
-  }
-}
-
-/* testo "tocca" scompare */
-
-.scene.pull-tail .tap {
+.scene.tension .tap {
   opacity: 0;
 }
 
-/* =====================================================
+
+/* =========================
    APERTURA BUSTA
-===================================================== */
+========================= */
 
 .scene.envelope-open .flap {
-
-  transform: rotateX(180deg);
+  transform:
+    rotateX(180deg);
 
   z-index: 1;
 }
 
-/* =====================================================
+
+/* =========================
    USCITA CARTONCINO
-===================================================== */
+========================= */
 
 .scene.card-out .card {
-
   visibility: visible;
   opacity: 1;
 
@@ -747,16 +763,17 @@ body {
   z-index: 30;
 
   box-shadow:
-    0 22px 50px rgba(60,50,40,.20);
+    0 22px 50px
+    rgba(60,50,40,.20);
 }
 
 .scene.card-out .header {
-
   opacity: 0;
 
   transform:
     translateY(-25px);
 }
+
 
 /* =========================
    MOBILE
@@ -765,7 +782,6 @@ body {
 @media (max-width: 390px) {
 
   .envelope {
-
     transform:
       translate(-50%, -50%)
       scale(.88);
@@ -784,6 +800,7 @@ body {
 <body>
 
 <div class="scene" id="scene">
+
 
   <!-- TESTATA -->
 
@@ -808,13 +825,16 @@ body {
   </div>
 
 
+
   <!-- BUSTA -->
 
   <div class="envelope">
 
+
     <div class="envelope-shadow"></div>
 
     <div class="back"></div>
+
 
 
     <!-- CARTONCINO -->
@@ -868,7 +888,9 @@ body {
 
         Bertesinella · Vicenza
 
+
         <br><br>
+
 
         A SEGUIRE FESTEGGEREMO
         <br>
@@ -893,6 +915,7 @@ body {
     </div>
 
 
+
     <!-- PATTA -->
 
     <div class="flap"></div>
@@ -907,30 +930,183 @@ body {
     <div class="front-bottom"></div>
 
 
-    <!-- NASTRO ORIZZONTALE DIVISO IN DUE -->
 
-    <div class="ribbon-left"></div>
+    <!-- =========================
+         FIOCCO SVG
+    ========================== -->
 
-    <div class="ribbon-right"></div>
+    <div
+      class="bow-button"
+      id="bowButton"
+      aria-label="Apri la partecipazione"
+      role="button"
+      tabindex="0"
+    >
+
+      <svg
+        class="bow-svg"
+        viewBox="0 0 350 230"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+
+        <defs>
+
+          <linearGradient
+            id="knotGradient"
+            x1="0"
+            y1="0"
+            x2="1"
+            y2="1"
+          >
+
+            <stop
+              offset="0%"
+              stop-color="#f0c7ca"
+            />
+
+            <stop
+              offset="50%"
+              stop-color="#dfa8ad"
+            />
+
+            <stop
+              offset="100%"
+              stop-color="#ca9299"
+            />
+
+          </linearGradient>
 
 
-    <!-- FIOCCO -->
+          <filter
+            id="ribbonShadow"
+            x="-30%"
+            y="-30%"
+            width="160%"
+            height="160%"
+          >
 
-    <div class="bow" id="bow">
+            <feDropShadow
+              dx="0"
+              dy="2"
+              stdDeviation="2"
+              flood-color="#70545a"
+              flood-opacity=".20"
+            />
 
-      <div class="loop loop-left"></div>
+          </filter>
 
-      <div class="loop loop-right"></div>
+        </defs>
 
-      <div class="tail tail-left"></div>
 
-      <div class="tail tail-right"></div>
 
-      <div class="knot"></div>
+        <g id="bowGroup">
+
+
+          <!-- NASTRO ORIZZONTALE -->
+
+          <path
+            class="ribbon-horizontal"
+            d="
+              M 8 112
+              C 65 111,
+                120 112,
+                166 112
+
+              M 184 112
+              C 230 112,
+                285 111,
+                342 112
+            "
+          />
+
+
+          <!-- ASOLA SINISTRA -->
+
+          <path
+            id="leftLoop"
+            class="loop-path"
+            d="
+              M 173 112
+
+              C 153 88,
+                118 82,
+                112 104
+
+              C 108 123,
+                143 126,
+                173 113
+            "
+          />
+
+
+          <!-- ASOLA DESTRA -->
+
+          <path
+            id="rightLoop"
+            class="loop-path"
+            d="
+              M 177 112
+
+              C 197 88,
+                232 82,
+                238 104
+
+              C 242 123,
+                207 126,
+                177 113
+            "
+          />
+
+
+          <!-- CODA SINISTRA -->
+
+          <path
+            id="leftTail"
+            class="tail-path"
+            d="
+              M 171 116
+
+              C 161 139,
+                150 164,
+                142 194
+            "
+          />
+
+
+          <!-- CODA DESTRA -->
+
+          <path
+            id="rightTail"
+            class="tail-path"
+            d="
+              M 179 116
+
+              C 190 139,
+                202 165,
+                211 194
+            "
+          />
+
+
+          <!-- NODO -->
+
+          <ellipse
+            id="knot"
+            class="knot-shape"
+            cx="175"
+            cy="112"
+            rx="13"
+            ry="11"
+          />
+
+        </g>
+
+      </svg>
 
     </div>
 
   </div>
+
 
 
   <!-- INDICAZIONE -->
@@ -958,93 +1134,114 @@ body {
 </div>
 
 
+
 <script>
 
 const scene =
   document.getElementById("scene");
 
-const bow =
-  document.getElementById("bow");
+const bowButton =
+  document.getElementById("bowButton");
 
 let opened = false;
 
 
-bow.addEventListener(
+function openInvitation() {
+
+  if (opened) return;
+
+  opened = true;
+
+
+  /*
+    1 — IL FIOCCO VA IN TENSIONE
+  */
+
+  scene.classList.add("tension");
+
+
+  /*
+    2 — VIENE TIRATA
+        L'ESTREMITÀ DESTRA
+  */
+
+  setTimeout(function() {
+
+    scene.classList.add("pull");
+
+  }, 400);
+
+
+  /*
+    3 — L'ASOLA È USCITA:
+        IL FIOCCO CEDE
+  */
+
+  setTimeout(function() {
+
+    scene.classList.add("release");
+
+  }, 1700);
+
+
+  /*
+    4 — IL NASTRO SCIOLTO
+        VIENE SFILATO
+  */
+
+  setTimeout(function() {
+
+    scene.classList.add("ribbon-away");
+
+  }, 2750);
+
+
+  /*
+    5 — PICCOLA PAUSA
+        E APERTURA BUSTA
+  */
+
+  setTimeout(function() {
+
+    scene.classList.add("envelope-open");
+
+  }, 3950);
+
+
+  /*
+    6 — SOLO DOPO
+        ESCE IL CARTONCINO
+  */
+
+  setTimeout(function() {
+
+    scene.classList.add("card-out");
+
+  }, 5150);
+
+}
+
+
+bowButton.addEventListener(
   "click",
+  openInvitation
+);
+
+
+bowButton.addEventListener(
+  "keydown",
   function(event) {
 
-    event.stopPropagation();
+    if (
+      event.key === "Enter" ||
+      event.key === " "
+    ) {
 
-    if (opened) return;
+      event.preventDefault();
 
-    opened = true;
+      openInvitation();
 
-
-    /*
-      1 — TIRIAMO UNA CODA
-    */
-
-    scene.classList.add("pull-tail");
-
-
-    /*
-      2 — L'ASOLA DESTRA
-          VIENE SFILATA
-    */
-
-    setTimeout(function() {
-
-      scene.classList.add("pull-loop");
-
-    }, 600);
-
-
-    /*
-      3 — IL RESTO DEL FIOCCO
-          SI APRE
-    */
-
-    setTimeout(function() {
-
-      scene.classList.add("bow-open");
-
-    }, 1300);
-
-
-    /*
-      4 — IL NASTRO SI SFILA
-          DALLA BUSTA
-    */
-
-    setTimeout(function() {
-
-      scene.classList.add("ribbon-away");
-
-    }, 2050);
-
-
-    /*
-      5 — PICCOLA PAUSA,
-          POI SI APRE LA BUSTA
-    */
-
-    setTimeout(function() {
-
-      scene.classList.add("envelope-open");
-
-    }, 3100);
-
-
-    /*
-      6 — DOPO L'APERTURA
-          ESCE IL CARTONCINO
-    */
-
-    setTimeout(function() {
-
-      scene.classList.add("card-out");
-
-    }, 4250);
+    }
 
   }
 );
