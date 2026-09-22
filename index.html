@@ -1,13 +1,306 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claudia & Davide | 15.05.2027</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Claudia & Davide | 15 maggio 2027</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, #f7f3eb 0%, #e9e1d5 100%);
+  font-family: Georgia, "Times New Roman", serif;
+  color: #465443;
+}
+
+/* CONTENITORE */
+
+.scene {
+  position: relative;
+  width: 360px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* BUSTA */
+
+.envelope {
+  position: absolute;
+  bottom: 70px;
+  width: 330px;
+  height: 215px;
+  cursor: pointer;
+  filter: drop-shadow(0 18px 20px rgba(60,50,40,.16));
+}
+
+/* RETRO BUSTA */
+
+.envelope-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ded2c1;
+  border-radius: 3px;
+}
+
+/* LINGUETTA */
+
+.flap {
+  position: absolute;
+  width: 100%;
+  height: 175px;
+  top: 0;
+  background: #d5c6b2;
+
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+
+  transform-origin: top;
+  transition: transform 1s ease;
+  z-index: 5;
+}
+
+/* PARTE ANTERIORE */
+
+.front-left {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #e8dfd1;
+
+  clip-path: polygon(0 0, 50% 58%, 0 100%);
+  z-index: 4;
+}
+
+.front-right {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #e4d9c9;
+
+  clip-path: polygon(100% 0, 50% 58%, 100% 100%);
+  z-index: 4;
+}
+
+.front-bottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #eee6da;
+
+  clip-path: polygon(0 100%, 50% 48%, 100% 100%);
+  z-index: 4;
+}
+
+/* INVITO */
+
+.card {
+  position: absolute;
+
+  width: 285px;
+  height: 390px;
+
+  left: 22px;
+  bottom: 10px;
+
+  background: #fffdf8;
+
+  padding: 38px 20px;
+
+  text-align: center;
+
+  z-index: 3;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,.12);
+
+  transition:
+    transform 1.3s cubic-bezier(.2,.8,.2,1),
+    z-index 0s linear .7s;
+
+  transform: translateY(0);
+}
+
+/* TESTO */
+
+.small {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.names {
+  font-family: "Brush Script MT", cursive;
+  font-size: 46px;
+  font-weight: normal;
+  margin: 5px 0 15px;
+  color: #52664d;
+}
+
+.date {
+  font-size: 19px;
+  letter-spacing: 3px;
+  margin: 14px 0;
+}
+
+.line {
+  width: 45px;
+  height: 1px;
+  background: #b89c67;
+  margin: 18px auto;
+}
+
+.details {
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.location {
+  font-size: 16px;
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+
+/* TESTO CLICCA */
+
+.open-text {
+  position: absolute;
+  bottom: 18px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: .65;
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:.4; }
+  50% { opacity:1; }
+}
+
+/* APERTURA */
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.open .card {
+  transform: translateY(-245px);
+  z-index: 6;
+}
+
+.envelope.open + .open-text {
+  opacity: 0;
+  animation: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 420px) {
+
+  .scene {
+    transform: scale(.92);
+  }
+
+}
+
+</style>
 </head>
 
 <body>
-  <h1>Claudia & Davide</h1>
-  <p>15 maggio 2027</p>
+
+<div class="scene">
+
+  <div class="envelope" id="envelope">
+
+    <div class="envelope-back"></div>
+
+    <div class="card">
+
+      <div class="small">
+        Siamo felici di invitarvi<br>
+        al nostro matrimonio
+      </div>
+
+      <div class="names">
+        Claudia & Davide
+      </div>
+
+      <div class="date">
+        15 MAGGIO 2027
+      </div>
+
+      <div>
+        ore 11:00
+      </div>
+
+      <div class="line"></div>
+
+      <div class="details">
+
+        CHIESA DI SAN BENEDETTO ABATE<br>
+
+        <span class="location">
+          Bertesinella · Vicenza
+        </span>
+
+        <br><br>
+
+        A seguire festeggeremo insieme presso
+
+        <br>
+
+        <strong>IL FARO</strong>
+
+        <br>
+
+        Via Sega 50<br>
+        Castione (TV)
+
+      </div>
+
+    </div>
+
+    <div class="flap"></div>
+
+    <div class="front-left"></div>
+    <div class="front-right"></div>
+    <div class="front-bottom"></div>
+
+  </div>
+
+  <div class="open-text">
+    Tocca la busta per aprire
+  </div>
+
+</div>
+
+<script>
+
+const envelope = document.getElementById("envelope");
+
+envelope.addEventListener("click", function() {
+  envelope.classList.toggle("open");
+});
+
+</script>
+
 </body>
 </html>
