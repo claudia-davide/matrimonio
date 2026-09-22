@@ -8,9 +8,7 @@
 
 <style>
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
@@ -46,6 +44,7 @@ body {
   width: 100%;
   text-align: center;
   z-index: 1;
+
   transition:
     opacity .8s ease,
     transform .8s ease;
@@ -83,6 +82,7 @@ body {
 
 .envelope {
   position: absolute;
+
   width: 350px;
   height: 230px;
 
@@ -95,12 +95,15 @@ body {
 
 .envelope-shadow {
   position: absolute;
+
   width: 90%;
   height: 28px;
+
   left: 5%;
   bottom: -22px;
 
   border-radius: 50%;
+
   background: rgba(60,50,40,.18);
   filter: blur(14px);
 
@@ -112,6 +115,7 @@ body {
   inset: 0;
 
   background: #eee5d8;
+
   border-radius: 4px;
 
   box-shadow: 0 14px 32px rgba(70,60,50,.16);
@@ -121,9 +125,6 @@ body {
 
 /* =========================
    CARTONCINO
-
-   IMPORTANTE:
-   inizialmente è invisibile.
 ========================= */
 
 .card {
@@ -138,21 +139,15 @@ body {
   padding: 40px 25px 32px;
 
   background: #fffdf8;
+
   text-align: center;
 
   box-shadow: 0 8px 25px rgba(60,50,40,.12);
 
-  /*
-     Parte all'interno della busta.
-  */
   transform:
     translateY(225px)
     scale(.95);
 
-  /*
-     COMPLETAMENTE INVISIBILE
-     finché non apriamo la busta.
-  */
   opacity: 0;
   visibility: hidden;
 
@@ -172,7 +167,9 @@ body {
 
 .card-names {
   margin: 20px 0 18px;
+
   font-family: "Snell Roundhand", "Brush Script MT", cursive;
+
   font-size: 40px;
   line-height: 1;
 }
@@ -190,7 +187,9 @@ body {
 .divider {
   width: 44px;
   height: 1px;
+
   margin: 20px auto;
+
   background: #d7aaa8;
 }
 
@@ -214,12 +213,7 @@ body {
 
   background: #eee5d8;
 
-  clip-path:
-    polygon(
-      0 0,
-      100% 0,
-      50% 72%
-    );
+  clip-path: polygon(0 0, 100% 0, 50% 72%);
 
   transform-origin: top center;
 
@@ -234,10 +228,12 @@ body {
   content: "❀  ✿  ❀  ✿  ❀";
 
   position: absolute;
+
   top: 42px;
   width: 100%;
 
   text-align: center;
+
   letter-spacing: 9px;
   font-size: 17px;
 
@@ -254,50 +250,39 @@ body {
 .front-bottom {
   position: absolute;
   inset: 0;
+
   z-index: 6;
 }
 
 .front-left {
   background: #f7f0e5;
-  clip-path:
-    polygon(
-      0 0,
-      51% 58%,
-      0 100%
-    );
+  clip-path: polygon(0 0, 51% 58%, 0 100%);
 }
 
 .front-right {
   background: #f4ebdf;
-  clip-path:
-    polygon(
-      100% 0,
-      49% 58%,
-      100% 100%
-    );
+  clip-path: polygon(100% 0, 49% 58%, 100% 100%);
 }
 
 .front-bottom {
   background: #faf3e9;
-  clip-path:
-    polygon(
-      0 100%,
-      50% 51%,
-      100% 100%
-    );
+  clip-path: polygon(0 100%, 50% 51%, 100% 100%);
 }
 
-/* =========================
-   NASTRO
-========================= */
+/* ==========================================
+   NASTRO ORIZZONTALE
 
-.ribbon {
+   Diviso in due metà.
+   Così non "svanisce": si sfila dalla busta.
+========================================== */
+
+.ribbon-left,
+.ribbon-right {
   position: absolute;
 
-  left: 0;
   top: 105px;
 
-  width: 100%;
+  width: 50%;
   height: 13px;
 
   z-index: 15;
@@ -311,10 +296,16 @@ body {
     );
 
   box-shadow: 0 2px 4px rgba(80,50,50,.10);
+}
 
-  transition:
-    opacity .45s ease,
-    transform .8s ease;
+.ribbon-left {
+  left: 0;
+  transform-origin: right center;
+}
+
+.ribbon-right {
+  right: 0;
+  transform-origin: left center;
 }
 
 /* =========================
@@ -327,14 +318,18 @@ body {
   left: 50%;
   top: 111px;
 
-  width: 110px;
+  width: 120px;
   height: 170px;
 
   transform: translate(-50%, -24px);
 
   z-index: 20;
+
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
+
+/* NODO */
 
 .knot {
   position: absolute;
@@ -342,7 +337,7 @@ body {
   left: 50%;
   top: 24px;
 
-  width: 20px;
+  width: 21px;
   height: 18px;
 
   transform: translateX(-50%);
@@ -361,47 +356,44 @@ body {
     0 2px 4px rgba(80,50,50,.15);
 
   z-index: 5;
-
-  transition:
-    transform .5s ease,
-    opacity .4s ease;
 }
+
+/* ASOLE */
 
 .loop {
   position: absolute;
 
   top: 12px;
 
-  width: 46px;
-  height: 30px;
+  width: 48px;
+  height: 31px;
 
   border: 9px solid #dfadb2;
 
   z-index: 3;
-
-  transition:
-    transform 1.15s cubic-bezier(.3,.7,.2,1),
-    width 1.15s ease,
-    opacity .8s ease;
 }
 
 .loop-left {
-  right: 55px;
+  right: 60px;
 
   border-radius: 70% 35% 65% 40%;
 
   transform: rotate(14deg);
+
   transform-origin: right center;
 }
 
 .loop-right {
-  left: 55px;
+  left: 60px;
 
   border-radius: 35% 70% 40% 65%;
 
   transform: rotate(-14deg);
+
   transform-origin: left center;
 }
+
+/* CODE */
 
 .tail {
   position: absolute;
@@ -422,19 +414,15 @@ body {
   transform-origin: top;
 
   z-index: 2;
-
-  transition:
-    transform 1.4s cubic-bezier(.2,.7,.2,1),
-    opacity .8s ease;
 }
 
 .tail-left {
-  right: 55px;
+  right: 59px;
   transform: rotate(23deg);
 }
 
 .tail-right {
-  left: 55px;
+  left: 59px;
   transform: rotate(-23deg);
 }
 
@@ -469,6 +457,7 @@ body {
 }
 
 @keyframes tapAnimation {
+
   0%, 100% {
     transform: translateY(0);
   }
@@ -478,93 +467,276 @@ body {
   }
 }
 
-/* =================================
-   1 — SCIOGLIMENTO FIOCCO
-================================= */
+/* =====================================================
+   ANIMAZIONE FIOCCO
 
-.scene.untying .loop-left {
-  width: 25px;
+   PRIMA viene tirata la coda destra
+===================================================== */
 
-  transform:
-    translate(-78px, 22px)
-    rotate(-38deg)
-    scaleY(.70);
-
-  opacity: .55;
+.scene.pull-tail .tail-right {
+  animation: pullRightTail .8s forwards ease-in-out;
 }
 
-.scene.untying .loop-right {
-  width: 25px;
-
-  transform:
-    translate(78px, 22px)
-    rotate(38deg)
-    scaleY(.70);
-
-  opacity: .55;
+.scene.pull-tail .knot {
+  animation: knotTension .8s forwards ease-in-out;
 }
 
-.scene.untying .knot {
-  transform:
-    translateX(-50%)
-    scale(.5)
-    rotate(12deg);
+@keyframes pullRightTail {
 
+  0% {
+    transform:
+      rotate(-23deg)
+      translate(0,0);
+  }
+
+  35% {
+    transform:
+      rotate(-30deg)
+      translate(8px,8px);
+  }
+
+  100% {
+    transform:
+      rotate(-47deg)
+      translate(46px,42px);
+  }
+}
+
+@keyframes knotTension {
+
+  0% {
+    transform:
+      translateX(-50%)
+      scale(1);
+  }
+
+  45% {
+    transform:
+      translateX(-46%)
+      scale(.92,1.08)
+      rotate(-5deg);
+  }
+
+  100% {
+    transform:
+      translateX(-43%)
+      scale(.82,1.05)
+      rotate(-8deg);
+  }
+}
+
+/* =====================================================
+   POI L'ASOLA DESTRA SI SFILA
+===================================================== */
+
+.scene.pull-loop .loop-right {
+  animation: pullRightLoop .9s forwards ease-in-out;
+}
+
+@keyframes pullRightLoop {
+
+  0% {
+    width: 48px;
+
+    transform:
+      rotate(-14deg)
+      translate(0,0);
+
+    opacity: 1;
+  }
+
+  45% {
+    width: 28px;
+
+    transform:
+      rotate(-5deg)
+      translate(18px,6px);
+
+    opacity: 1;
+  }
+
+  100% {
+    width: 7px;
+
+    transform:
+      rotate(12deg)
+      translate(73px,15px)
+      scaleY(.55);
+
+    opacity: 0;
+  }
+}
+
+/* =====================================================
+   IL NODO CEDE E L'ALTRA ASOLA SI APRE
+===================================================== */
+
+.scene.bow-open .loop-left {
+  animation: openLeftLoop .8s forwards ease-out;
+}
+
+.scene.bow-open .knot {
+  animation: releaseKnot .65s forwards ease-out;
+}
+
+.scene.bow-open .tail-left {
+  animation: fallLeftTail .9s forwards ease-in;
+}
+
+@keyframes openLeftLoop {
+
+  0% {
+    width: 48px;
+    transform: rotate(14deg);
+    opacity: 1;
+  }
+
+  50% {
+    width: 34px;
+
+    transform:
+      translate(-20px,8px)
+      rotate(28deg)
+      scaleY(.8);
+
+    opacity: .9;
+  }
+
+  100% {
+    width: 12px;
+
+    transform:
+      translate(-70px,28px)
+      rotate(55deg)
+      scaleY(.55);
+
+    opacity: 0;
+  }
+}
+
+@keyframes releaseKnot {
+
+  0% {
+    opacity: 1;
+
+    transform:
+      translateX(-43%)
+      scale(.82,1.05)
+      rotate(-8deg);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(-70%,25px)
+      scale(.35)
+      rotate(-35deg);
+  }
+}
+
+@keyframes fallLeftTail {
+
+  0% {
+    transform: rotate(23deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(-65px,85px)
+      rotate(68deg);
+
+    opacity: 0;
+  }
+}
+
+/* coda destra completa il movimento */
+
+.scene.bow-open .tail-right {
+  animation: finishRightTail .8s forwards ease-in;
+}
+
+@keyframes finishRightTail {
+
+  0% {
+    transform:
+      rotate(-47deg)
+      translate(46px,42px);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(95px,100px)
+      rotate(-80deg);
+
+    opacity: 0;
+  }
+}
+
+/* =====================================================
+   IL NASTRO ORIZZONTALE SI SFILA
+===================================================== */
+
+.scene.ribbon-away .ribbon-left {
+  animation: ribbonLeftAway .8s forwards ease-in;
+}
+
+.scene.ribbon-away .ribbon-right {
+  animation: ribbonRightAway .8s forwards ease-in;
+}
+
+@keyframes ribbonLeftAway {
+
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-190px);
+    opacity: 0;
+  }
+}
+
+@keyframes ribbonRightAway {
+
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(190px);
+    opacity: 0;
+  }
+}
+
+/* testo "tocca" scompare */
+
+.scene.pull-tail .tap {
   opacity: 0;
 }
 
-.scene.untying .tail-left {
-  transform:
-    translate(-90px, 95px)
-    rotate(65deg);
-
-  opacity: 0;
-}
-
-.scene.untying .tail-right {
-  transform:
-    translate(90px, 95px)
-    rotate(-65deg);
-
-  opacity: 0;
-}
-
-.scene.untying .tap {
-  opacity: 0;
-}
-
-/* =================================
-   2 — NASTRO VIA
-================================= */
-
-.scene.ribbon-away .ribbon {
-  opacity: 0;
-  transform: scaleX(1.15);
-}
-
-.scene.ribbon-away .loop {
-  opacity: 0;
-}
-
-/* =================================
-   3 — APERTURA PATTA
-
-   Il foglio è ANCORA invisibile.
-================================= */
+/* =====================================================
+   APERTURA BUSTA
+===================================================== */
 
 .scene.envelope-open .flap {
+
   transform: rotateX(180deg);
+
   z-index: 1;
 }
 
-/* =================================
-   4 — CARTONCINO
-
-   Solo in questo momento
-   diventa visibile e sale.
-================================= */
+/* =====================================================
+   USCITA CARTONCINO
+===================================================== */
 
 .scene.card-out .card {
+
   visibility: visible;
   opacity: 1;
 
@@ -579,8 +751,11 @@ body {
 }
 
 .scene.card-out .header {
+
   opacity: 0;
-  transform: translateY(-25px);
+
+  transform:
+    translateY(-25px);
 }
 
 /* =========================
@@ -590,6 +765,7 @@ body {
 @media (max-width: 390px) {
 
   .envelope {
+
     transform:
       translate(-50%, -50%)
       scale(.88);
@@ -598,14 +774,18 @@ body {
   .header {
     top: 7%;
   }
+
 }
 
 </style>
 </head>
 
+
 <body>
 
 <div class="scene" id="scene">
+
+  <!-- TESTATA -->
 
   <div class="header">
 
@@ -628,6 +808,8 @@ body {
   </div>
 
 
+  <!-- BUSTA -->
+
   <div class="envelope">
 
     <div class="envelope-shadow"></div>
@@ -640,28 +822,42 @@ body {
     <div class="card">
 
       <div class="card-small">
+
         SIAMO FELICI DI INVITARVI
         <br>
         AL NOSTRO MATRIMONIO
+
       </div>
+
 
       <div class="card-names">
+
         Claudia & Davide
+
       </div>
+
 
       <div class="card-date">
+
         15 MAGGIO 2027
+
       </div>
+
 
       <div class="card-time">
+
         ORE 11:00
+
       </div>
 
+
       <div class="divider"></div>
+
 
       <div class="card-details">
 
         CHIESA DI
+
         <br>
 
         <strong>
@@ -697,15 +893,28 @@ body {
     </div>
 
 
+    <!-- PATTA -->
+
     <div class="flap"></div>
 
+
+    <!-- FRONTE BUSTA -->
+
     <div class="front-left"></div>
+
     <div class="front-right"></div>
+
     <div class="front-bottom"></div>
 
 
-    <div class="ribbon"></div>
+    <!-- NASTRO ORIZZONTALE DIVISO IN DUE -->
 
+    <div class="ribbon-left"></div>
+
+    <div class="ribbon-right"></div>
+
+
+    <!-- FIOCCO -->
 
     <div class="bow" id="bow">
 
@@ -724,6 +933,8 @@ body {
   </div>
 
 
+  <!-- INDICAZIONE -->
+
   <div class="tap">
 
     <span class="tap-hand">
@@ -737,7 +948,9 @@ body {
       color:#d89ca4;
       font-size:14px;
     ">
+
       ─── ♥ ───
+
     </div>
 
   </div>
@@ -767,36 +980,71 @@ bow.addEventListener(
     opened = true;
 
 
-    /* 1 — SCIOGLIE IL FIOCCO */
+    /*
+      1 — TIRIAMO UNA CODA
+    */
 
-    scene.classList.add("untying");
+    scene.classList.add("pull-tail");
 
 
-    /* 2 — NASTRO VIA */
+    /*
+      2 — L'ASOLA DESTRA
+          VIENE SFILATA
+    */
+
+    setTimeout(function() {
+
+      scene.classList.add("pull-loop");
+
+    }, 600);
+
+
+    /*
+      3 — IL RESTO DEL FIOCCO
+          SI APRE
+    */
+
+    setTimeout(function() {
+
+      scene.classList.add("bow-open");
+
+    }, 1300);
+
+
+    /*
+      4 — IL NASTRO SI SFILA
+          DALLA BUSTA
+    */
 
     setTimeout(function() {
 
       scene.classList.add("ribbon-away");
 
-    }, 1150);
+    }, 2050);
 
 
-    /* 3 — APRE LA BUSTA */
+    /*
+      5 — PICCOLA PAUSA,
+          POI SI APRE LA BUSTA
+    */
 
     setTimeout(function() {
 
       scene.classList.add("envelope-open");
 
-    }, 2050);
+    }, 3100);
 
 
-    /* 4 — SOLO ORA COMPARE ED ESCE IL FOGLIO */
+    /*
+      6 — DOPO L'APERTURA
+          ESCE IL CARTONCINO
+    */
 
     setTimeout(function() {
 
       scene.classList.add("card-out");
 
-    }, 3200);
+    }, 4250);
 
   }
 );
