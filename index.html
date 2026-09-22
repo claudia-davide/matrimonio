@@ -1,1252 +1,184 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Claudia & Davide | 15 maggio 2027</title>
-
-<style>
-
-* { box-sizing: border-box; }
-
-html, body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
-
-body {
-  overflow: hidden;
-  font-family: Georgia, "Times New Roman", serif;
-  color: #697064;
-
-  background:
-    radial-gradient(circle at 15% 15%, rgba(246,214,222,.30), transparent 25%),
-    radial-gradient(circle at 85% 80%, rgba(215,232,247,.34), transparent 28%),
-    #faf7f0;
-}
-
-.scene {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 650px;
-  overflow: hidden;
-}
-
-
-/* =========================
-   TESTATA
-========================= */
-
-.header {
-  position: absolute;
-  top: 8%;
-  width: 100%;
-  text-align: center;
-  z-index: 1;
-
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
-
-.names {
-  margin: 0;
-
-  font-family:
-    "Snell Roundhand",
-    "Brush Script MT",
-    cursive;
-
-  font-size: clamp(42px, 11vw, 60px);
-  font-weight: 400;
-  line-height: 1;
-
-  color: #68705f;
-}
-
-.date {
-  margin-top: 20px;
-  font-size: 14px;
-  letter-spacing: 6px;
-}
-
-.chapter {
-  margin-top: 17px;
-  font-size: 9px;
-  letter-spacing: 3.5px;
-}
-
-.heartline {
-  margin-top: 12px;
-  color: #d89ca4;
-}
-
-
-/* =========================
-   BUSTA
-========================= */
-
-.envelope {
-  position: absolute;
-
-  width: 350px;
-  height: 230px;
-
-  left: 50%;
-  top: 52%;
-
-  transform: translate(-50%, -50%);
-
-  perspective: 1200px;
-}
-
-.envelope-shadow {
-  position: absolute;
-
-  width: 90%;
-  height: 28px;
-
-  left: 5%;
-  bottom: -22px;
-
-  border-radius: 50%;
-
-  background: rgba(60,50,40,.18);
-
-  filter: blur(14px);
-
-  z-index: -5;
-}
-
-.back {
-  position: absolute;
-  inset: 0;
-
-  background: #eee5d8;
-
-  border-radius: 4px;
-
-  box-shadow:
-    0 14px 32px rgba(70,60,50,.16);
-
-  z-index: 1;
-}
-
-
-/* =========================
-   CARTONCINO
-========================= */
-
-.card {
-  position: absolute;
-
-  width: 300px;
-  height: 455px;
-
-  left: 25px;
-  bottom: 12px;
-
-  padding: 40px 25px 32px;
-
-  background: #fffdf8;
-
-  text-align: center;
-
-  box-shadow:
-    0 8px 25px rgba(60,50,40,.12);
-
-  transform:
-    translateY(225px)
-    scale(.95);
-
-  opacity: 0;
-  visibility: hidden;
-
-  z-index: 2;
-
-  transition:
-    transform 1.55s cubic-bezier(.18,.82,.25,1),
-    opacity .18s ease,
-    box-shadow 1s ease;
-}
-
-.card-small {
-  font-size: 9px;
-  letter-spacing: 2.5px;
-  line-height: 1.6;
-}
-
-.card-names {
-  margin: 20px 0 18px;
-
-  font-family:
-    "Snell Roundhand",
-    "Brush Script MT",
-    cursive;
-
-  font-size: 40px;
-  line-height: 1;
-}
-
-.card-date {
-  font-size: 14px;
-  letter-spacing: 4px;
-}
-
-.card-time {
-  margin-top: 10px;
-  font-size: 12px;
-}
-
-.divider {
-  width: 44px;
-  height: 1px;
-
-  margin: 20px auto;
-
-  background: #d7aaa8;
-}
-
-.card-details {
-  font-size: 11px;
-  line-height: 1.65;
-}
-
-.card-details strong {
-  font-size: 12px;
-  letter-spacing: .5px;
-}
-
-
-/* =========================
-   PATTA
-========================= */
-
-.flap {
-  position: absolute;
-  inset: 0;
-
-  background: #eee5d8;
-
-  clip-path:
-    polygon(
-      0 0,
-      100% 0,
-      50% 72%
-    );
-
-  transform-origin: top center;
-
-  z-index: 7;
-
-  transition:
-    transform 1.05s cubic-bezier(.4,0,.2,1),
-    z-index 0s linear .55s;
-}
-
-.flap::after {
-  content: "❀  ✿  ❀  ✿  ❀";
-
-  position: absolute;
-
-  top: 42px;
-  width: 100%;
-
-  text-align: center;
-
-  letter-spacing: 9px;
-  font-size: 17px;
-
-  color: #aab7a2;
-
-  opacity: .65;
-}
-
-
-/* =========================
-   FRONTE BUSTA
-========================= */
-
-.front-left,
-.front-right,
-.front-bottom {
-  position: absolute;
-  inset: 0;
-
-  z-index: 6;
-}
-
-.front-left {
-  background: #f7f0e5;
-
-  clip-path:
-    polygon(
-      0 0,
-      51% 58%,
-      0 100%
-    );
-}
-
-.front-right {
-  background: #f4ebdf;
-
-  clip-path:
-    polygon(
-      100% 0,
-      49% 58%,
-      100% 100%
-    );
-}
-
-.front-bottom {
-  background: #faf3e9;
-
-  clip-path:
-    polygon(
-      0 100%,
-      50% 51%,
-      100% 100%
-    );
-}
-
-
-/* ==================================================
-   FIOCCO SVG
-================================================== */
-
-.bow-button {
-  position: absolute;
-
-  width: 350px;
-  height: 230px;
-
-  left: 0;
-  top: 0;
-
-  z-index: 20;
-
-  cursor: pointer;
-
-  -webkit-tap-highlight-color: transparent;
-}
-
-.bow-svg {
-  position: absolute;
-
-  width: 350px;
-  height: 230px;
-
-  left: 0;
-  top: 0;
-
-  overflow: visible;
-}
-
-
-/* nastro orizzontale */
-
-.ribbon-horizontal {
-  fill: none;
-
-  stroke: #dda9ae;
-
-  stroke-width: 13;
-
-  stroke-linecap: round;
-
-  filter: url(#ribbonShadow);
-}
-
-
-/* asole */
-
-.loop-path {
-  fill: none;
-
-  stroke: #e0adb2;
-
-  stroke-width: 12;
-
-  stroke-linecap: round;
-  stroke-linejoin: round;
-
-  filter: url(#ribbonShadow);
-}
-
-
-/* code */
-
-.tail-path {
-  fill: none;
-
-  stroke: #dfaab0;
-
-  stroke-width: 12;
-
-  stroke-linecap: round;
-
-  filter: url(#ribbonShadow);
-}
-
-
-/* nodo */
-
-.knot-shape {
-  fill: url(#knotGradient);
-
-  filter: url(#ribbonShadow);
-}
-
-
-/* ==================================================
-   ANIMAZIONE SVG
-================================================== */
-
-/*
-  FASE 1:
-  piccolo movimento di tensione
-*/
-
-.scene.tension #bowGroup {
-  animation:
-    bowTension .55s forwards ease-in-out;
-}
-
-@keyframes bowTension {
-
-  0% {
-    transform: translate(0,0);
-  }
-
-  45% {
-    transform: translate(-1px,0);
-  }
-
-  100% {
-    transform: translate(1px,1px);
-  }
-}
-
-
-/*
-  FASE 2:
-  tiriamo il capo destro
-*/
-
-.scene.pull #rightTail {
-  animation:
-    pullTail 1.35s forwards
-    cubic-bezier(.3,.05,.25,1);
-}
-
-@keyframes pullTail {
-
-  0% {
-    transform:
-      translate(0,0)
-      rotate(0deg);
-  }
-
-  30% {
-    transform:
-      translate(8px,5px)
-      rotate(-3deg);
-  }
-
-  65% {
-    transform:
-      translate(35px,13px)
-      rotate(-8deg);
-  }
-
-  100% {
-    transform:
-      translate(92px,24px)
-      rotate(-14deg);
-  }
-}
-
-
-/*
-  L'asola destra contemporaneamente
-  viene risucchiata verso il nodo.
-*/
-
-.scene.pull #rightLoop {
-  transform-origin: 177px 112px;
-
-  animation:
-    shrinkRightLoop 1.35s forwards
-    cubic-bezier(.35,.05,.2,1);
-}
-
-@keyframes shrinkRightLoop {
-
-  0% {
-    transform:
-      translate(0,0)
-      scaleX(1);
-    opacity: 1;
-  }
-
-  35% {
-    transform:
-      translate(-5px,1px)
-      scaleX(.78);
-    opacity: 1;
-  }
-
-  70% {
-    transform:
-      translate(-11px,2px)
-      scaleX(.40);
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translate(-15px,3px)
-      scaleX(.06);
-    opacity: 0;
-  }
-}
-
-
-/*
-  Nodo sotto tensione.
-*/
-
-.scene.pull #knot {
-  transform-origin: 175px 112px;
-
-  animation:
-    knotPull 1.35s forwards ease-in-out;
-}
-
-@keyframes knotPull {
-
-  0% {
-    transform: scale(1);
-  }
-
-  55% {
-    transform:
-      scale(.90,1.08)
-      rotate(-3deg);
-  }
-
-  100% {
-    transform:
-      scale(.78,1)
-      rotate(-5deg);
-  }
-}
-
-
-/*
-  FASE 3:
-  una volta sfilata l'asola,
-  il fiocco collassa.
-*/
-
-.scene.release #leftLoop {
-  transform-origin: 173px 112px;
-
-  animation:
-    releaseLeftLoop 1s forwards
-    cubic-bezier(.2,.6,.3,1);
-}
-
-@keyframes releaseLeftLoop {
-
-  0% {
-    transform:
-      scaleX(1)
-      rotate(0deg);
-    opacity: 1;
-  }
-
-  45% {
-    transform:
-      translate(-13px,5px)
-      scaleX(.65)
-      rotate(8deg);
-    opacity: 1;
-  }
-
-  100% {
-    transform:
-      translate(-55px,19px)
-      scaleX(.18)
-      rotate(19deg);
-    opacity: 0;
-  }
-}
-
-
-.scene.release #knot {
-  animation:
-    knotRelease .65s forwards ease-out;
-}
-
-@keyframes knotRelease {
-
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-
-    transform:
-      translateY(9px)
-      scale(.45);
-  }
-}
-
-
-/*
-  Le code diventano due lembi
-  di nastro sciolto.
-*/
-
-.scene.release #leftTail {
-  transform-origin: 172px 113px;
-
-  animation:
-    looseLeftTail 1s forwards ease-out;
-}
-
-@keyframes looseLeftTail {
-
-  0% {
-    transform:
-      translate(0,0)
-      rotate(0deg);
-  }
-
-  100% {
-    transform:
-      translate(-38px,25px)
-      rotate(17deg);
-  }
-}
-
-
-.scene.release #rightTail {
-  animation:
-    looseRightTail 1s forwards ease-out;
-}
-
-@keyframes looseRightTail {
-
-  0% {
-    transform:
-      translate(92px,24px)
-      rotate(-14deg);
-  }
-
-  100% {
-    transform:
-      translate(115px,36px)
-      rotate(-20deg);
-  }
-}
-
-
-/*
-  FASE 4:
-  tutto il nastro ormai sciolto
-  viene sfilato dalla busta.
-*/
-
-.scene.ribbon-away #bowGroup {
-  animation:
-    ribbonLeaves 1.05s forwards
-    cubic-bezier(.5,0,.7,.4);
-}
-
-@keyframes ribbonLeaves {
-
-  0% {
-    opacity: 1;
-    transform: translate(0,0);
-  }
-
-  40% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform:
-      translate(150px,35px)
-      rotate(-5deg);
-  }
-}
-
-
-/* =========================
-   INDICAZIONE
-========================= */
-
-.tap {
-  position: absolute;
-
-  bottom: 7%;
-  width: 100%;
-
-  text-align: center;
-
-  font-size: 10px;
-  letter-spacing: 4px;
-
-  color: #777a6f;
-
-  transition: opacity .5s ease;
-}
-
-.tap-hand {
-  display: block;
-
-  margin-bottom: 8px;
-
-  font-size: 26px;
-
-  animation:
-    tapAnimation 1.7s infinite;
-}
-
-@keyframes tapAnimation {
-
-  0%,100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.scene.tension .tap {
-  opacity: 0;
-}
-
-
-/* =========================
-   APERTURA BUSTA
-========================= */
-
-.scene.envelope-open .flap {
-  transform:
-    rotateX(180deg);
-
-  z-index: 1;
-}
-
-
-/* =========================
-   USCITA CARTONCINO
-========================= */
-
-.scene.card-out .card {
-  visibility: visible;
-  opacity: 1;
-
-  transform:
-    translateY(-255px)
-    scale(1.04);
-
-  z-index: 30;
-
-  box-shadow:
-    0 22px 50px
-    rgba(60,50,40,.20);
-}
-
-.scene.card-out .header {
-  opacity: 0;
-
-  transform:
-    translateY(-25px);
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 390px) {
-
-  .envelope {
-    transform:
-      translate(-50%, -50%)
-      scale(.88);
-  }
-
-  .header {
-    top: 7%;
-  }
-
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Claudia & Davide — 15.05.2027</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #f8f2e9;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: Georgia, serif;
+    }
+
+    #invitation {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8f2e9;
+    }
+
+    .media-wrapper {
+      position: relative;
+      height: 100dvh;
+      max-height: 100dvh;
+      aspect-ratio: 2 / 3;
+      max-width: 100vw;
+      overflow: hidden;
+      background: #f8f2e9;
+    }
+
+    #cover,
+    #openingVideo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    #cover {
+      z-index: 2;
+      cursor: pointer;
+      transition: opacity 0.18s ease;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    #openingVideo {
+      z-index: 1;
+      opacity: 0;
+      background: #f8f2e9;
+    }
+
+    .playing #openingVideo {
+      opacity: 1;
+    }
+
+    .playing #cover {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #continueScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 32px;
+      background: #f8f2e9;
+      color: #6f7465;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease;
+    }
+
+    #continueScreen.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #continueScreen h1 {
+      font-weight: normal;
+      font-size: clamp(36px, 9vw, 64px);
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    #continueScreen p {
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1.8;
+    }
+  </style>
 </head>
-
 
 <body>
 
-<div class="scene" id="scene">
-
-
-  <!-- TESTATA -->
-
-  <div class="header">
-
-    <h1 class="names">
-      Claudia & Davide
-    </h1>
-
-    <div class="date">
-      15 · 05 · 2027
-    </div>
-
-    <div class="chapter">
-      UN NUOVO CAPITOLO INSIEME
-    </div>
-
-    <div class="heartline">
-      ─── ♥ ───
-    </div>
-
-  </div>
-
-
-
-  <!-- BUSTA -->
-
-  <div class="envelope">
-
-
-    <div class="envelope-shadow"></div>
-
-    <div class="back"></div>
-
-
-
-    <!-- CARTONCINO -->
-
-    <div class="card">
-
-      <div class="card-small">
-
-        SIAMO FELICI DI INVITARVI
-        <br>
-        AL NOSTRO MATRIMONIO
-
-      </div>
-
-
-      <div class="card-names">
-
-        Claudia & Davide
-
-      </div>
-
-
-      <div class="card-date">
-
-        15 MAGGIO 2027
-
-      </div>
-
-
-      <div class="card-time">
-
-        ORE 11:00
-
-      </div>
-
-
-      <div class="divider"></div>
-
-
-      <div class="card-details">
-
-        CHIESA DI
-
-        <br>
-
-        <strong>
-          SAN BENEDETTO ABATE
-        </strong>
-
-        <br>
-
-        Bertesinella · Vicenza
-
-
-        <br><br>
-
-
-        A SEGUIRE FESTEGGEREMO
-        <br>
-        INSIEME PRESSO
-
-        <br>
-
-        <strong>
-          IL FARO
-        </strong>
-
-        <br>
-
-        Via Sega 50
-
-        <br>
-
-        Castione (TV)
-
-      </div>
-
-    </div>
-
-
-
-    <!-- PATTA -->
-
-    <div class="flap"></div>
-
-
-    <!-- FRONTE BUSTA -->
-
-    <div class="front-left"></div>
-
-    <div class="front-right"></div>
-
-    <div class="front-bottom"></div>
-
-
-
-    <!-- =========================
-         FIOCCO SVG
-    ========================== -->
-
-    <div
-      class="bow-button"
-      id="bowButton"
-      aria-label="Apri la partecipazione"
-      role="button"
-      tabindex="0"
-    >
-
-      <svg
-        class="bow-svg"
-        viewBox="0 0 350 230"
-        xmlns="http://www.w3.org/2000/svg"
+  <main id="invitation">
+    <div class="media-wrapper" id="mediaWrapper">
+
+      <video
+        id="openingVideo"
+        playsinline
+        preload="auto"
+        muted
+      >
+        <source
+          src="Ribbon_unties_and_envelope_opens_20260922224925.mp4"
+          type="video/mp4"
+        >
+      </video>
+
+      <img
+        id="cover"
+        src="Invito%20floreale%20romantico%20Claudia%20%26%20Davide.png"
+        alt="Invito al matrimonio di Claudia e Davide"
       >
 
-        <defs>
-
-          <linearGradient
-            id="knotGradient"
-            x1="0"
-            y1="0"
-            x2="1"
-            y2="1"
-          >
-
-            <stop
-              offset="0%"
-              stop-color="#f0c7ca"
-            />
-
-            <stop
-              offset="50%"
-              stop-color="#dfa8ad"
-            />
-
-            <stop
-              offset="100%"
-              stop-color="#ca9299"
-            />
-
-          </linearGradient>
-
-
-          <filter
-            id="ribbonShadow"
-            x="-30%"
-            y="-30%"
-            width="160%"
-            height="160%"
-          >
-
-            <feDropShadow
-              dx="0"
-              dy="2"
-              stdDeviation="2"
-              flood-color="#70545a"
-              flood-opacity=".20"
-            />
-
-          </filter>
-
-        </defs>
-
-
-
-        <g id="bowGroup">
-
-
-          <!-- NASTRO ORIZZONTALE -->
-
-          <path
-            class="ribbon-horizontal"
-            d="
-              M 8 112
-              C 65 111,
-                120 112,
-                166 112
-
-              M 184 112
-              C 230 112,
-                285 111,
-                342 112
-            "
-          />
-
-
-          <!-- ASOLA SINISTRA -->
-
-          <path
-            id="leftLoop"
-            class="loop-path"
-            d="
-              M 173 112
-
-              C 153 88,
-                118 82,
-                112 104
-
-              C 108 123,
-                143 126,
-                173 113
-            "
-          />
-
-
-          <!-- ASOLA DESTRA -->
-
-          <path
-            id="rightLoop"
-            class="loop-path"
-            d="
-              M 177 112
-
-              C 197 88,
-                232 82,
-                238 104
-
-              C 242 123,
-                207 126,
-                177 113
-            "
-          />
-
-
-          <!-- CODA SINISTRA -->
-
-          <path
-            id="leftTail"
-            class="tail-path"
-            d="
-              M 171 116
-
-              C 161 139,
-                150 164,
-                142 194
-            "
-          />
-
-
-          <!-- CODA DESTRA -->
-
-          <path
-            id="rightTail"
-            class="tail-path"
-            d="
-              M 179 116
-
-              C 190 139,
-                202 165,
-                211 194
-            "
-          />
-
-
-          <!-- NODO -->
-
-          <ellipse
-            id="knot"
-            class="knot-shape"
-            cx="175"
-            cy="112"
-            rx="13"
-            ry="11"
-          />
-
-        </g>
-
-      </svg>
-
     </div>
+  </main>
 
-  </div>
+  <section id="continueScreen">
+    <h1>Claudia & Davide</h1>
+    <p>
+      15 · 05 · 2027<br>
+      Il nostro matrimonio
+    </p>
+  </section>
 
+  <script>
+    const wrapper = document.getElementById("mediaWrapper");
+    const cover = document.getElementById("cover");
+    const video = document.getElementById("openingVideo");
+    const continueScreen = document.getElementById("continueScreen");
 
+    let started = false;
 
-  <!-- INDICAZIONE -->
+    async function openInvitation() {
+      if (started) return;
+      started = true;
 
-  <div class="tap">
-
-    <span class="tap-hand">
-      ☝︎
-    </span>
-
-    TOCCA IL FIOCCO PER APRIRE
-
-    <div style="
-      margin-top:13px;
-      color:#d89ca4;
-      font-size:14px;
-    ">
-
-      ─── ♥ ───
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<script>
-
-const scene =
-  document.getElementById("scene");
-
-const bowButton =
-  document.getElementById("bowButton");
-
-let opened = false;
-
-
-function openInvitation() {
-
-  if (opened) return;
-
-  opened = true;
-
-
-  /*
-    1 — IL FIOCCO VA IN TENSIONE
-  */
-
-  scene.classList.add("tension");
-
-
-  /*
-    2 — VIENE TIRATA
-        L'ESTREMITÀ DESTRA
-  */
-
-  setTimeout(function() {
-
-    scene.classList.add("pull");
-
-  }, 400);
-
-
-  /*
-    3 — L'ASOLA È USCITA:
-        IL FIOCCO CEDE
-  */
-
-  setTimeout(function() {
-
-    scene.classList.add("release");
-
-  }, 1700);
-
-
-  /*
-    4 — IL NASTRO SCIOLTO
-        VIENE SFILATO
-  */
-
-  setTimeout(function() {
-
-    scene.classList.add("ribbon-away");
-
-  }, 2750);
-
-
-  /*
-    5 — PICCOLA PAUSA
-        E APERTURA BUSTA
-  */
-
-  setTimeout(function() {
-
-    scene.classList.add("envelope-open");
-
-  }, 3950);
-
-
-  /*
-    6 — SOLO DOPO
-        ESCE IL CARTONCINO
-  */
-
-  setTimeout(function() {
-
-    scene.classList.add("card-out");
-
-  }, 5150);
-
-}
-
-
-bowButton.addEventListener(
-  "click",
-  openInvitation
-);
-
-
-bowButton.addEventListener(
-  "keydown",
-  function(event) {
-
-    if (
-      event.key === "Enter" ||
-      event.key === " "
-    ) {
-
-      event.preventDefault();
-
-      openInvitation();
-
+      try {
+        video.currentTime = 0;
+        await video.play();
+        wrapper.classList.add("playing");
+      } catch (error) {
+        started = false;
+        console.error("Impossibile avviare il video:", error);
+      }
     }
 
-  }
-);
+    cover.addEventListener("click", openInvitation);
 
-</script>
+    video.addEventListener("ended", () => {
+      continueScreen.classList.add("visible");
+
+      setTimeout(() => {
+        document.getElementById("invitation").style.display = "none";
+      }, 850);
+    });
+  </script>
 
 </body>
 </html>
