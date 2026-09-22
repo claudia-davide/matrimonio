@@ -1,375 +1,402 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Claudia & Davide — 15.05.2027</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Claudia & Davide — 15.05.2027</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      background: #faf6ef;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      color: #687064;
-      overflow: hidden;
-    }
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background: #faf6ef;
+}
 
-    /* =========================
-       INTRO
-       ========================= */
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #6f7468;
+  overflow: hidden;
+}
 
-    #invitation {
-      position: fixed;
-      inset: 0;
-      z-index: 20;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f8f2e9;
-      transition: opacity 1s ease;
-    }
+/* ================= INTRO ================= */
 
-    #invitation.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
+#invitation {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f2e9;
+  transition: opacity 1s ease;
+}
 
-    .media-wrapper {
-      position: relative;
-      height: 100dvh;
-      max-height: 100dvh;
-      aspect-ratio: 2 / 3;
-      max-width: 100vw;
-      overflow: hidden;
-      background: #f8f2e9;
-    }
+#invitation.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
 
-    #cover,
-    #openingVideo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
+.media-wrapper {
+  position: relative;
+  height: 100dvh;
+  max-height: 100dvh;
+  aspect-ratio: 2 / 3;
+  max-width: 100vw;
+  overflow: hidden;
+  background: #f8f2e9;
+}
 
-    #cover {
-      z-index: 2;
-      cursor: pointer;
-      transition: opacity 0.18s ease;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-    }
+#cover,
+#openingVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 
-    #openingVideo {
-      z-index: 1;
-      opacity: 0;
-      background: #f8f2e9;
-    }
+#cover {
+  z-index: 2;
+  cursor: pointer;
+  transition: opacity .18s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
 
-    .playing #openingVideo {
-      opacity: 1;
-    }
+#openingVideo {
+  z-index: 1;
+  opacity: 0;
+  background: #f8f2e9;
+}
 
-    .playing #cover {
-      opacity: 0;
-      pointer-events: none;
-    }
+.playing #openingVideo {
+  opacity: 1;
+}
 
-    /* =========================
-       INVITO DOPO L'APERTURA
-       ========================= */
+.playing #cover {
+  opacity: 0;
+  pointer-events: none;
+}
 
-    #weddingContent {
-      position: relative;
-      width: 100%;
-      min-height: 100dvh;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 1.2s ease;
-      overflow: hidden;
+/* ================= PAGINA ================= */
 
-      background:
-        radial-gradient(
-          circle at 50% 20%,
-          rgba(255,255,255,0.75),
-          transparent 42%
-        ),
-        #faf6ef;
-    }
+#weddingContent {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease;
+  background: #faf6ef;
+}
 
-    #weddingContent.visible {
-      opacity: 1;
-      visibility: visible;
-    }
+#weddingContent.visible {
+  opacity: 1;
+  visibility: visible;
+}
 
-    .hero {
-      position: relative;
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 70px 28px 90px;
-      overflow: hidden;
-    }
+.section {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 85px 26px;
+}
 
-    /* decorazioni floreali astratte */
+.inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
 
-    .flowers-top {
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      top: -120px;
-      left: -105px;
-      opacity: 0.8;
-      transform: rotate(-12deg);
-      pointer-events: none;
-    }
+/* ================= FIORI ================= */
 
-    .flowers-bottom {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      right: -125px;
-      bottom: -125px;
-      opacity: 0.75;
-      transform: rotate(160deg);
-      pointer-events: none;
-    }
+.floral {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("817e1056-922c-4783-9709-0e4517c1d126.png");
+  background-repeat: no-repeat;
+  background-size: 700px auto;
+  opacity: .33;
+}
 
-    .flower-circle {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(0.2px);
-    }
+.floral.top-left {
+  width: 330px;
+  height: 330px;
+  top: -25px;
+  left: -80px;
+  background-position: left top;
+}
 
-    .pink {
-      width: 100px;
-      height: 100px;
-      background: rgba(246, 214, 222, 0.72);
-      left: 55px;
-      top: 65px;
-    }
+.floral.bottom-right {
+  width: 340px;
+  height: 340px;
+  right: -100px;
+  bottom: -35px;
+  background-position: right bottom;
+}
 
-    .blue {
-      width: 88px;
-      height: 88px;
-      background: rgba(198, 218, 231, 0.7);
-      left: 130px;
-      top: 110px;
-    }
+.floral.small-right {
+  width: 260px;
+  height: 310px;
+  right: -110px;
+  top: 8%;
+  background-position: right top;
+  opacity: .23;
+}
 
-    .yellow {
-      width: 78px;
-      height: 78px;
-      background: rgba(255, 242, 194, 0.78);
-      left: 95px;
-      top: 155px;
-    }
+.floral.small-left {
+  width: 270px;
+  height: 300px;
+  left: -115px;
+  bottom: 4%;
+  background-position: left bottom;
+  opacity: .23;
+}
 
-    .leaf {
-      position: absolute;
-      width: 42px;
-      height: 105px;
-      border-radius: 100% 0 100% 0;
-      background: rgba(172, 190, 158, 0.45);
-    }
+/* ================= HERO ================= */
 
-    .leaf.one {
-      left: 35px;
-      top: 120px;
-      transform: rotate(-25deg);
-    }
+.hero {
+  background:
+    radial-gradient(circle at 50% 40%,
+      rgba(255,255,255,.9),
+      rgba(250,246,239,.72) 55%,
+      #faf6ef 100%);
+}
 
-    .leaf.two {
-      left: 175px;
-      top: 45px;
-      transform: rotate(40deg);
-    }
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  color: #a18e88;
+  margin-bottom: 30px;
+}
 
-    /* contenuto centrale */
+.names {
+  font-family: "Snell Roundhand", "Apple Chancery", cursive;
+  font-size: clamp(50px, 14vw, 80px);
+  line-height: 1;
+  font-weight: 400;
+  color: #687266;
+  margin-bottom: 27px;
+}
 
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: #9a8d85;
-      margin-bottom: 32px;
-    }
+.ornament {
+  color: #d3adb3;
+  font-size: 21px;
+  margin-bottom: 27px;
+}
 
-    .names {
-      font-family: "Snell Roundhand", "Apple Chancery", "URW Chancery L", cursive;
-      font-size: clamp(48px, 13vw, 78px);
-      font-weight: 400;
-      line-height: 1.05;
-      color: #667063;
-      margin-bottom: 30px;
-    }
+.intro {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #777970;
+  margin: 0 auto 38px;
+  max-width: 380px;
+}
 
-    .small-flower {
-      font-size: 20px;
-      color: #cfaeb3;
-      margin-bottom: 30px;
-    }
+.big-date {
+  font-size: clamp(24px, 7vw, 34px);
+  letter-spacing: .15em;
+  color: #737e71;
+  margin-bottom: 12px;
+}
 
-    .intro-text {
-      max-width: 390px;
-      font-size: 17px;
-      line-height: 1.8;
-      color: #77776f;
-      margin-bottom: 36px;
-    }
+.hour {
+  font-size: 11px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: #a48f89;
+}
 
-    .date {
-      font-size: clamp(25px, 7vw, 34px);
-      letter-spacing: 0.15em;
-      color: #778275;
-      margin-bottom: 12px;
-    }
+.scroll {
+  position: absolute;
+  z-index: 4;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #aaa198;
+  text-align: center;
+  line-height: 2;
+  animation: float 2s ease-in-out infinite;
+}
 
-    .time {
-      font-size: 13px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #a4938d;
-    }
+.scroll span {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
 
-    /* indicazione scroll */
+@keyframes float {
+  0%,100% { transform:translateX(-50%) translateY(0); }
+  50% { transform:translateX(-50%) translateY(7px); }
+}
 
-    .scroll-hint {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: #a9a39a;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      animation: float 2s ease-in-out infinite;
-    }
+/* ================= EVENTI ================= */
 
-    .scroll-arrow {
-      font-size: 19px;
-      font-family: Arial, sans-serif;
-    }
+.event {
+  background: #f7f1e9;
+}
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateX(-50%) translateY(0);
-      }
-      50% {
-        transform: translateX(-50%) translateY(7px);
-      }
-    }
+.event.reception {
+  background: #fbf7f1;
+}
 
-    /* seconda schermata provvisoria */
+.section-label {
+  font-size: 10px;
+  letter-spacing: .36em;
+  text-transform: uppercase;
+  color: #b28f91;
+  margin-bottom: 22px;
+}
 
-    .next-section {
-      min-height: 100dvh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 60px 30px;
-      background: #f7f1e9;
-    }
+.event-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 22px;
+  border: 1px solid rgba(117,129,113,.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #7c8878;
+}
 
-    .next-section p {
-      font-size: 13px;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      line-height: 2;
-      color: #9a9189;
-    }
+.event h2 {
+  font-family: "Snell Roundhand", "Apple Chancery", cursive;
+  font-size: clamp(39px, 10vw, 58px);
+  font-weight: 400;
+  line-height: 1.12;
+  color: #697467;
+  margin-bottom: 22px;
+}
 
-    @media (min-width: 700px) {
-      .hero {
-        padding-left: 50px;
-        padding-right: 50px;
-      }
+.event-date {
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: #a48f89;
+  margin-bottom: 26px;
+}
 
-      .flowers-top {
-        width: 360px;
-        height: 360px;
-      }
+.place {
+  font-size: 19px;
+  line-height: 1.6;
+  color: #666d64;
+  margin-bottom: 9px;
+}
 
-      .flowers-bottom {
-        width: 380px;
-        height: 380px;
-      }
-    }
-  </style>
+.address {
+  max-width: 360px;
+  margin: auto;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #969087;
+}
+
+.divider {
+  width: 65px;
+  height: 1px;
+  background: #d8bfc0;
+  margin: 31px auto;
+}
+
+.map-button {
+  display: inline-block;
+  margin-top: 2px;
+  padding: 14px 25px;
+  border: 1px solid #aeb9aa;
+  border-radius: 50px;
+  color: #707c6d;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  transition: .25s ease;
+}
+
+.map-button:hover {
+  background: #707c6d;
+  color: #fff;
+}
+
+/* ================= DESKTOP ================= */
+
+@media (min-width: 700px) {
+  .section {
+    padding: 100px 50px;
+  }
+
+  .floral {
+    background-size: 850px auto;
+  }
+
+  .floral.top-left {
+    width: 430px;
+    height: 430px;
+  }
+
+  .floral.bottom-right {
+    width: 450px;
+    height: 450px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- INTRO CON IMMAGINE + VIDEO -->
+<!-- APERTURA -->
 
-  <main id="invitation">
+<main id="invitation">
 
-    <div class="media-wrapper" id="mediaWrapper">
+  <div class="media-wrapper" id="mediaWrapper">
 
-      <video
-        id="openingVideo"
-        playsinline
-        preload="auto"
-        muted
-      >
-        <source
-          src="Ribbon_unties_and_envelope_opens_20260922224925.mp4"
-          type="video/mp4"
-        >
-      </video>
+    <video id="openingVideo" playsinline preload="auto" muted>
+      <source
+        src="Ribbon_unties_and_envelope_opens_20260922224925.mp4"
+        type="video/mp4">
+    </video>
 
-      <img
-        id="cover"
-        src="Invito%20floreale%20romantico%20Claudia%20%26%20Davide.png"
-        alt="Invito al matrimonio di Claudia e Davide"
-      >
+    <img
+      id="cover"
+      src="Invito%20floreale%20romantico%20Claudia%20%26%20Davide.png"
+      alt="Invito al matrimonio di Claudia e Davide">
 
-    </div>
+  </div>
 
-  </main>
+</main>
 
 
-  <!-- CONTENUTO DELLA PARTECIPAZIONE -->
+<!-- INVITO -->
 
-  <main id="weddingContent">
+<main id="weddingContent">
 
-    <section class="hero">
+  <!-- INTRO -->
 
-      <div class="flowers-top">
-        <div class="flower-circle pink"></div>
-        <div class="flower-circle blue"></div>
-        <div class="flower-circle yellow"></div>
-        <div class="leaf one"></div>
-        <div class="leaf two"></div>
-      </div>
+  <section class="section hero">
 
-      <div class="flowers-bottom">
-        <div class="flower-circle pink"></div>
-        <div class="flower-circle blue"></div>
-        <div class="flower-circle yellow"></div>
-        <div class="leaf one"></div>
-        <div class="leaf two"></div>
-      </div>
+    <div class="floral top-left"></div>
+    <div class="floral bottom-right"></div>
+
+    <div class="inner">
 
       <div class="eyebrow">
         Ci sposiamo
@@ -379,89 +406,174 @@
         Claudia &amp; Davide
       </h1>
 
-      <div class="small-flower">
-        ❀
-      </div>
+      <div class="ornament">❀</div>
 
-      <p class="intro-text">
-        Siamo felici di condividere con voi<br>
-        l'inizio di un nuovo capitolo<br>
+      <p class="intro">
+        Siamo felici di condividere con voi
+        l'inizio di un nuovo capitolo
         della nostra storia.
       </p>
 
-      <div class="date">
+      <div class="big-date">
         15 · 05 · 2027
       </div>
 
-      <div class="time">
+      <div class="hour">
         ore 11:00
       </div>
 
-      <div class="scroll-hint">
-        <span>Scopri</span>
-        <span class="scroll-arrow">↓</span>
+    </div>
+
+    <div class="scroll">
+      Scopri
+      <span>↓</span>
+    </div>
+
+  </section>
+
+
+  <!-- CERIMONIA -->
+
+  <section class="section event">
+
+    <div class="floral small-right"></div>
+    <div class="floral small-left"></div>
+
+    <div class="inner">
+
+      <div class="section-label">
+        La cerimonia
       </div>
 
-    </section>
+      <div class="event-icon">
+        ♡
+      </div>
 
+      <h2>
+        Il nostro sì
+      </h2>
 
-    <!-- PER ORA SERVE SOLO PER TESTARE LO SCROLL -->
+      <div class="event-date">
+        Sabato 15 maggio 2027 · ore 11:00
+      </div>
 
-    <section class="next-section">
-      <p>
-        La nostra giornata<br>
-        continua qui
+      <p class="place">
+        Chiesa di San Benedetto Abate
       </p>
-    </section>
 
-  </main>
+      <p class="address">
+        Bertesinella · Vicenza
+      </p>
 
+      <div class="divider"></div>
 
-  <script>
-    const wrapper = document.getElementById("mediaWrapper");
-    const cover = document.getElementById("cover");
-    const video = document.getElementById("openingVideo");
-    const invitation = document.getElementById("invitation");
-    const weddingContent = document.getElementById("weddingContent");
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Chiesa+di+San+Benedetto+Abate+Bertesinella+Vicenza"
+        target="_blank"
+        rel="noopener">
+        Apri la mappa
+      </a>
 
-    let started = false;
+    </div>
 
-    async function openInvitation() {
-      if (started) return;
-
-      started = true;
-
-      try {
-        video.currentTime = 0;
-        await video.play();
-
-        wrapper.classList.add("playing");
-
-      } catch (error) {
-
-        started = false;
-        console.error("Impossibile avviare il video:", error);
-
-      }
-    }
-
-    cover.addEventListener("click", openInvitation);
+  </section>
 
 
-    video.addEventListener("ended", () => {
+  <!-- RICEVIMENTO -->
 
-      weddingContent.classList.add("visible");
+  <section class="section event reception">
 
-      invitation.classList.add("fade-out");
+    <div class="floral top-left"></div>
+    <div class="floral bottom-right"></div>
 
-      document.body.style.overflow = "auto";
+    <div class="inner">
 
-      setTimeout(() => {
-        invitation.style.display = "none";
-      }, 1000);
+      <div class="section-label">
+        A seguire
+      </div>
 
-    });
-  </script>
+      <div class="event-icon">
+        ❀
+      </div>
+
+      <h2>
+        Festeggiamo insieme
+      </h2>
+
+      <p class="place">
+        Il Faro
+      </p>
+
+      <p class="address">
+        Via Sega 50<br>
+        Castione (TV)
+      </p>
+
+      <div class="divider"></div>
+
+      <a
+        class="map-button"
+        href="https://www.google.com/maps/search/?api=1&query=Il+Faro+Via+Sega+50+Castione+TV"
+        target="_blank"
+        rel="noopener">
+        Apri la mappa
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<script>
+const wrapper = document.getElementById("mediaWrapper");
+const cover = document.getElementById("cover");
+const video = document.getElementById("openingVideo");
+const invitation = document.getElementById("invitation");
+const weddingContent = document.getElementById("weddingContent");
+
+let started = false;
+
+async function openInvitation() {
+
+  if (started) return;
+
+  started = true;
+
+  try {
+
+    video.currentTime = 0;
+    await video.play();
+
+    wrapper.classList.add("playing");
+
+  } catch (error) {
+
+    started = false;
+    console.error("Impossibile avviare il video:", error);
+
+  }
+}
+
+cover.addEventListener("click", openInvitation);
+
+video.addEventListener("ended", () => {
+
+  weddingContent.classList.add("visible");
+  invitation.classList.add("fade-out");
+
+  document.body.style.overflow = "auto";
+
+  window.scrollTo(0, 0);
+
+  setTimeout(() => {
+    invitation.style.display = "none";
+  }, 1000);
+
+});
+</script>
 
 </body>
 </html>
