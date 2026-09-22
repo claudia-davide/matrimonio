@@ -14,22 +14,34 @@
 
     html, body {
       width: 100%;
-      height: 100%;
-      background: #f8f2e9;
-      overflow: hidden;
+      min-height: 100%;
+      background: #faf6ef;
     }
 
     body {
-      font-family: Georgia, serif;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #687064;
+      overflow: hidden;
     }
+
+    /* =========================
+       INTRO
+       ========================= */
 
     #invitation {
       position: fixed;
       inset: 0;
+      z-index: 20;
       display: flex;
       justify-content: center;
       align-items: center;
       background: #f8f2e9;
+      transition: opacity 1s ease;
+    }
+
+    #invitation.fade-out {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .media-wrapper {
@@ -75,47 +87,243 @@
       pointer-events: none;
     }
 
-    #continueScreen {
-      position: fixed;
-      inset: 0;
-      z-index: 5;
+    /* =========================
+       INVITO DOPO L'APERTURA
+       ========================= */
+
+    #weddingContent {
+      position: relative;
+      width: 100%;
+      min-height: 100dvh;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 1.2s ease;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(255,255,255,0.75),
+          transparent 42%
+        ),
+        #faf6ef;
+    }
+
+    #weddingContent.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 32px;
-      background: #f8f2e9;
-      color: #6f7465;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s ease;
+      padding: 70px 28px 90px;
+      overflow: hidden;
     }
 
-    #continueScreen.visible {
-      opacity: 1;
-      visibility: visible;
+    /* decorazioni floreali astratte */
+
+    .flowers-top {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      top: -120px;
+      left: -105px;
+      opacity: 0.8;
+      transform: rotate(-12deg);
+      pointer-events: none;
     }
 
-    #continueScreen h1 {
-      font-weight: normal;
-      font-size: clamp(36px, 9vw, 64px);
-      margin-bottom: 18px;
-      font-style: italic;
+    .flowers-bottom {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -125px;
+      bottom: -125px;
+      opacity: 0.75;
+      transform: rotate(160deg);
+      pointer-events: none;
     }
 
-    #continueScreen p {
-      font-size: 14px;
-      letter-spacing: 0.18em;
+    .flower-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(0.2px);
+    }
+
+    .pink {
+      width: 100px;
+      height: 100px;
+      background: rgba(246, 214, 222, 0.72);
+      left: 55px;
+      top: 65px;
+    }
+
+    .blue {
+      width: 88px;
+      height: 88px;
+      background: rgba(198, 218, 231, 0.7);
+      left: 130px;
+      top: 110px;
+    }
+
+    .yellow {
+      width: 78px;
+      height: 78px;
+      background: rgba(255, 242, 194, 0.78);
+      left: 95px;
+      top: 155px;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 42px;
+      height: 105px;
+      border-radius: 100% 0 100% 0;
+      background: rgba(172, 190, 158, 0.45);
+    }
+
+    .leaf.one {
+      left: 35px;
+      top: 120px;
+      transform: rotate(-25deg);
+    }
+
+    .leaf.two {
+      left: 175px;
+      top: 45px;
+      transform: rotate(40deg);
+    }
+
+    /* contenuto centrale */
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
+      color: #9a8d85;
+      margin-bottom: 32px;
+    }
+
+    .names {
+      font-family: "Snell Roundhand", "Apple Chancery", "URW Chancery L", cursive;
+      font-size: clamp(48px, 13vw, 78px);
+      font-weight: 400;
+      line-height: 1.05;
+      color: #667063;
+      margin-bottom: 30px;
+    }
+
+    .small-flower {
+      font-size: 20px;
+      color: #cfaeb3;
+      margin-bottom: 30px;
+    }
+
+    .intro-text {
+      max-width: 390px;
+      font-size: 17px;
       line-height: 1.8;
+      color: #77776f;
+      margin-bottom: 36px;
+    }
+
+    .date {
+      font-size: clamp(25px, 7vw, 34px);
+      letter-spacing: 0.15em;
+      color: #778275;
+      margin-bottom: 12px;
+    }
+
+    .time {
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #a4938d;
+    }
+
+    /* indicazione scroll */
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: #a9a39a;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .scroll-arrow {
+      font-size: 19px;
+      font-family: Arial, sans-serif;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(7px);
+      }
+    }
+
+    /* seconda schermata provvisoria */
+
+    .next-section {
+      min-height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 30px;
+      background: #f7f1e9;
+    }
+
+    .next-section p {
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      line-height: 2;
+      color: #9a9189;
+    }
+
+    @media (min-width: 700px) {
+      .hero {
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+
+      .flowers-top {
+        width: 360px;
+        height: 360px;
+      }
+
+      .flowers-bottom {
+        width: 380px;
+        height: 380px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- INTRO CON IMMAGINE + VIDEO -->
+
   <main id="invitation">
+
     <div class="media-wrapper" id="mediaWrapper">
 
       <video
@@ -137,46 +345,121 @@
       >
 
     </div>
+
   </main>
 
-  <section id="continueScreen">
-    <h1>Claudia & Davide</h1>
-    <p>
-      15 · 05 · 2027<br>
-      Il nostro matrimonio
-    </p>
-  </section>
+
+  <!-- CONTENUTO DELLA PARTECIPAZIONE -->
+
+  <main id="weddingContent">
+
+    <section class="hero">
+
+      <div class="flowers-top">
+        <div class="flower-circle pink"></div>
+        <div class="flower-circle blue"></div>
+        <div class="flower-circle yellow"></div>
+        <div class="leaf one"></div>
+        <div class="leaf two"></div>
+      </div>
+
+      <div class="flowers-bottom">
+        <div class="flower-circle pink"></div>
+        <div class="flower-circle blue"></div>
+        <div class="flower-circle yellow"></div>
+        <div class="leaf one"></div>
+        <div class="leaf two"></div>
+      </div>
+
+      <div class="eyebrow">
+        Ci sposiamo
+      </div>
+
+      <h1 class="names">
+        Claudia &amp; Davide
+      </h1>
+
+      <div class="small-flower">
+        ❀
+      </div>
+
+      <p class="intro-text">
+        Siamo felici di condividere con voi<br>
+        l'inizio di un nuovo capitolo<br>
+        della nostra storia.
+      </p>
+
+      <div class="date">
+        15 · 05 · 2027
+      </div>
+
+      <div class="time">
+        ore 11:00
+      </div>
+
+      <div class="scroll-hint">
+        <span>Scopri</span>
+        <span class="scroll-arrow">↓</span>
+      </div>
+
+    </section>
+
+
+    <!-- PER ORA SERVE SOLO PER TESTARE LO SCROLL -->
+
+    <section class="next-section">
+      <p>
+        La nostra giornata<br>
+        continua qui
+      </p>
+    </section>
+
+  </main>
+
 
   <script>
     const wrapper = document.getElementById("mediaWrapper");
     const cover = document.getElementById("cover");
     const video = document.getElementById("openingVideo");
-    const continueScreen = document.getElementById("continueScreen");
+    const invitation = document.getElementById("invitation");
+    const weddingContent = document.getElementById("weddingContent");
 
     let started = false;
 
     async function openInvitation() {
       if (started) return;
+
       started = true;
 
       try {
         video.currentTime = 0;
         await video.play();
+
         wrapper.classList.add("playing");
+
       } catch (error) {
+
         started = false;
         console.error("Impossibile avviare il video:", error);
+
       }
     }
 
     cover.addEventListener("click", openInvitation);
 
+
     video.addEventListener("ended", () => {
-      continueScreen.classList.add("visible");
+
+      weddingContent.classList.add("visible");
+
+      invitation.classList.add("fade-out");
+
+      document.body.style.overflow = "auto";
 
       setTimeout(() => {
-        document.getElementById("invitation").style.display = "none";
-      }, 850);
+        invitation.style.display = "none";
+      }, 1000);
+
     });
   </script>
 
