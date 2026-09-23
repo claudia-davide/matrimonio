@@ -110,7 +110,30 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 85px 26px;
+  padding: 92px 26px;
+}
+
+/* sottile continuità tra le sezioni */
+
+.section::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(169,140,142,.20),
+      transparent
+    );
+}
+
+.final-section::after {
+  display: none;
 }
 
 .inner {
@@ -127,64 +150,66 @@ body {
   position: absolute;
   z-index: 1;
   pointer-events: none;
-  background-image: url("817e1056-922c-4783-9709-0e4517c1d126.png");
+  background-image:
+    url("817e1056-922c-4783-9709-0e4517c1d126.png");
   background-repeat: no-repeat;
   background-size: 700px auto;
-  opacity: .33;
-transition: transform 0.15s linear;
-will-change: transform;
+  opacity: .27;
+  transition: transform .15s linear;
+  will-change: transform;
+  filter: saturate(.92);
 }
 
 .floral.top-left {
-  width: 330px;
-  height: 330px;
-  top: -25px;
-  left: -80px;
+  width: 350px;
+  height: 350px;
+  top: -42px;
+  left: -105px;
   background-position: left top;
 }
 
 .floral.bottom-right {
-  width: 340px;
-  height: 340px;
-  right: -100px;
-  bottom: -35px;
+  width: 365px;
+  height: 365px;
+  right: -120px;
+  bottom: -50px;
   background-position: right bottom;
 }
 
 .floral.small-right {
-  width: 260px;
-  height: 310px;
-  right: -110px;
-  top: 8%;
+  width: 245px;
+  height: 295px;
+  right: -125px;
+  top: 9%;
   background-position: right top;
-  opacity: .23;
+  opacity: .17;
 }
 
 .floral.small-left {
-  width: 270px;
-  height: 300px;
-  left: -115px;
-  bottom: 4%;
+  width: 255px;
+  height: 290px;
+  left: -125px;
+  bottom: 5%;
   background-position: left bottom;
-  opacity: .23;
+  opacity: .17;
 }
 
 /* ================= TESTI GENERALI ================= */
 
 .eyebrow,
 .section-label {
-  font-size: 10px;
-  letter-spacing: .36em;
+  font-size: 9px;
+  letter-spacing: .40em;
   text-transform: uppercase;
   color: #a98c8e;
 }
 
 .eyebrow {
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .section-label {
-  margin-bottom: 22px;
+  margin-bottom: 25px;
 }
 
 .names,
@@ -197,23 +222,23 @@ will-change: transform;
 .names {
   font-size: clamp(50px, 14vw, 80px);
   line-height: 1;
-  margin-bottom: 27px;
+  margin-bottom: 28px;
 }
 
 .script-title {
-  font-size: clamp(39px, 10vw, 58px);
-  line-height: 1.12;
-  margin-bottom: 22px;
+  font-size: clamp(40px, 10vw, 59px);
+  line-height: 1.1;
+  margin-bottom: 25px;
 }
 
 .ornament {
   color: #d3adb3;
-  font-size: 21px;
-  margin-bottom: 27px;
+  font-size: 19px;
+  margin-bottom: 29px;
 }
 
 .divider {
-  width: 65px;
+  width: 46px;
   height: 1px;
   background: #d8bfc0;
   margin: 31px auto;
@@ -225,30 +250,30 @@ will-change: transform;
   background:
     radial-gradient(
       circle at 50% 40%,
-      rgba(255,255,255,.9),
-      rgba(250,246,239,.72) 55%,
+      rgba(255,255,255,.92),
+      rgba(250,246,239,.74) 58%,
       #faf6ef 100%
     );
 }
 
 .intro {
   font-size: 17px;
-  line-height: 1.9;
+  line-height: 1.95;
   color: #777970;
-  margin: 0 auto 38px;
+  margin: 0 auto 40px;
   max-width: 380px;
 }
 
 .big-date {
   font-size: clamp(24px, 7vw, 34px);
-  letter-spacing: .15em;
+  letter-spacing: .16em;
   color: #737e71;
   margin-bottom: 12px;
 }
 
 .hour {
-  font-size: 11px;
-  letter-spacing: .28em;
+  font-size: 10px;
+  letter-spacing: .30em;
   text-transform: uppercase;
   color: #a48f89;
 }
@@ -287,125 +312,182 @@ will-change: transform;
 /* ================= CERIMONIA / RICEVIMENTO ================= */
 
 .event {
-  background: #f7f1e9;
+  background:
+    linear-gradient(
+      180deg,
+      #faf6ef 0%,
+      #f7f1e9 48%,
+      #faf6ef 100%
+    );
 }
 
 .event.reception {
-  background: #fbf7f1;
+  background:
+    linear-gradient(
+      180deg,
+      #faf6ef 0%,
+      #fbf7f1 50%,
+      #f8f2ea 100%
+    );
 }
 
+/* simboli più editoriali, senza cerchio */
+
 .event-icon {
-  width: 50px;
-  height: 50px;
+  width: auto;
+  height: auto;
   margin: 0 auto 22px;
-  border: 1px solid rgba(117,129,113,.35);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: #7c8878;
+  border: 0;
+  border-radius: 0;
+  display: block;
+  font-size: 19px;
+  color: #b68f94;
+}
+
+.event-icon::before,
+.event-icon::after {
+  content: "—";
+  display: inline-block;
+  margin: 0 12px;
+  color: #d9c2c3;
+  font-size: 12px;
+  vertical-align: 2px;
 }
 
 .event-date {
-  font-size: 12px;
-  letter-spacing: .22em;
+  font-size: 11px;
+  letter-spacing: .20em;
   text-transform: uppercase;
   color: #a48f89;
-  margin-bottom: 26px;
+  margin-bottom: 28px;
 }
 
 .place {
-  font-size: 19px;
-  line-height: 1.6;
+  font-size: 20px;
+  line-height: 1.55;
   color: #666d64;
-  margin-bottom: 9px;
+  margin-bottom: 10px;
 }
 
 .address {
   max-width: 360px;
   margin: auto;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: #969087;
 }
 
 /* ================= PULSANTI ================= */
 
+/*
+  Più simili a link eleganti della partecipazione
+  e meno a pulsanti di un sito.
+*/
+
 .button {
   display: inline-block;
+  position: relative;
   margin-top: 2px;
-  padding: 15px 27px;
-  border: 1px solid #aeb9aa;
-  border-radius: 50px;
+  padding: 12px 5px 9px;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(112,124,109,.55);
   color: #707c6d;
-  background: rgba(255,255,255,.25);
+  background: transparent;
   text-decoration: none;
   font-family: Georgia, serif;
-  font-size: 10px;
-  letter-spacing: .20em;
+  font-size: 9px;
+  letter-spacing: .23em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: .25s ease;
+  transition:
+    color .25s ease,
+    border-color .25s ease,
+    letter-spacing .25s ease;
 }
 
 .button:hover {
-  background: #707c6d;
-  color: #fff;
+  background: transparent;
+  color: #a98c8e;
+  border-color: #a98c8e;
+  letter-spacing: .27em;
 }
 
 /* ================= COUNTDOWN ================= */
 
 .countdown-section {
-  background: #f7f1e9;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,.58),
+      transparent 55%
+    ),
+    #f7f1e9;
 }
 
 .countdown-intro {
   max-width: 390px;
-  margin: 0 auto 38px;
+  margin: 0 auto 45px;
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.85;
   color: #777970;
 }
+
+/*
+  Countdown editoriale:
+  niente più quattro scatoline.
+*/
 
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 9px;
+  gap: 0;
   width: 100%;
   max-width: 470px;
   margin: 0 auto;
 }
 
 .count-box {
-  padding: 20px 5px 17px;
-  border: 1px solid rgba(173,184,169,.55);
-  border-radius: 16px;
-  background: rgba(255,255,255,.35);
-  backdrop-filter: blur(4px);
+  position: relative;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.count-box:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  right: -3px;
+  top: 5px;
+  font-size: 27px;
+  color: #d2b4b7;
+  font-weight: normal;
 }
 
 .count-number {
   display: block;
-  font-size: clamp(25px, 7vw, 38px);
+  font-size: clamp(28px, 8vw, 42px);
   line-height: 1;
   color: #6d796a;
   font-variant-numeric: tabular-nums;
+  font-weight: normal;
 }
 
 .count-label {
   display: block;
-  margin-top: 10px;
+  margin-top: 13px;
   font-size: 8px;
-  letter-spacing: .13em;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: #a38e89;
 }
 
 .until {
-  margin-top: 35px;
-  font-size: 10px;
-  letter-spacing: .27em;
+  margin-top: 40px;
+  font-size: 9px;
+  letter-spacing: .31em;
   text-transform: uppercase;
   color: #b09092;
 }
@@ -413,51 +495,84 @@ will-change: transform;
 /* ================= RSVP ================= */
 
 .rsvp {
-  background: #fbf7f1;
+  background:
+    linear-gradient(
+      180deg,
+      #f8f2ea 0%,
+      #fbf7f1 48%,
+      #faf6ef 100%
+    );
 }
 
 .body-copy {
   max-width: 400px;
   margin: 0 auto;
   font-size: 16px;
-  line-height: 1.9;
+  line-height: 1.95;
   color: #777970;
 }
 
 .rsvp .button {
-  margin-top: 35px;
-  padding: 17px 30px;
+  margin-top: 38px;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
 /* ================= REGALO ================= */
 
 .gift {
-  background: #f7f1e9;
+  background:
+    linear-gradient(
+      180deg,
+      #faf6ef 0%,
+      #f7f1e9 55%,
+      #faf6ef 100%
+    );
 }
 
+/*
+  Non più "card da sito":
+  diventa una sezione delimitata da due linee sottili.
+*/
+
 .gift-card {
+  position: relative;
   width: 100%;
   max-width: 440px;
-  margin: 35px auto 0;
-  padding: 31px 22px;
-  border: 1px solid rgba(174,185,170,.55);
-  border-radius: 22px;
-  background: rgba(255,255,255,.38);
+  margin: 40px auto 0;
+  padding: 36px 22px 30px;
+  border: 0;
+  border-top: 1px solid rgba(174,185,170,.48);
+  border-bottom: 1px solid rgba(174,185,170,.48);
+  border-radius: 0;
+  background: rgba(255,255,255,.18);
+}
+
+.gift-card::before {
+  content: "♡";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 12px;
+  background: #f7f1e9;
+  color: #d2a8ae;
+  font-size: 17px;
 }
 
 .account-name {
   font-size: 13px;
   line-height: 1.7;
   color: #817d76;
-  margin-bottom: 21px;
+  margin-bottom: 22px;
 }
 
 .iban-label {
-  font-size: 9px;
-  letter-spacing: .25em;
+  font-size: 8px;
+  letter-spacing: .28em;
   text-transform: uppercase;
   color: #af9293;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
 }
 
 #iban {
@@ -467,7 +582,7 @@ will-change: transform;
   letter-spacing: .06em;
   color: #626d60;
   overflow-wrap: anywhere;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .copy-feedback {
@@ -484,9 +599,9 @@ will-change: transform;
 }
 
 .reason {
-  margin-top: 21px;
+  margin-top: 19px;
   font-size: 11px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: #9a9189;
 }
 
@@ -498,29 +613,53 @@ will-change: transform;
 /* ================= FINALE ================= */
 
 .final-section {
-  min-height: 75dvh;
-  background: #fbf7f1;
+  min-height: 88dvh;
+  background:
+    radial-gradient(
+      circle at 50% 44%,
+      rgba(255,255,255,.82),
+      rgba(251,247,241,.65) 52%,
+      #fbf7f1 100%
+    );
+}
+
+.final-section .floral.top-left {
+  opacity: .32;
+}
+
+.final-section .floral.bottom-right {
+  opacity: .38;
+}
+
+.final-section .section-label {
+  margin-bottom: 34px;
+}
+
+.final-section .names {
+  margin-bottom: 31px;
 }
 
 .final-heart {
   color: #d2a8ae;
-  font-size: 22px;
-  margin: 25px 0;
+  font-size: 21px;
+  margin: 28px 0;
 }
 
 .final-date {
-  font-size: 11px;
-  letter-spacing: .30em;
+  font-size: 10px;
+  letter-spacing: .34em;
   text-transform: uppercase;
   color: #a48f89;
 }
 
-/* ================= ANIMAZIONI SCROLL ================= */
+/* ================= ANIMAZIONI ================= */
 
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(20px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
 .reveal.visible {
@@ -535,12 +674,13 @@ will-change: transform;
     transition: none;
   }
 }
-  /* ================= DESKTOP ================= */
+
+/* ================= DESKTOP ================= */
 
 @media (min-width: 700px) {
 
   .section {
-    padding: 100px 50px;
+    padding: 105px 50px;
   }
 
   .floral {
@@ -555,6 +695,11 @@ will-change: transform;
   .floral.bottom-right {
     width: 450px;
     height: 450px;
+  }
+
+  .gift-card {
+    padding-left: 36px;
+    padding-right: 36px;
   }
 }
 </style>
@@ -802,20 +947,24 @@ will-change: transform;
       </h2>
 
       <p class="body-copy">
-  Per aiutarci a organizzare al meglio
-  questa giornata, vi chiediamo di confermare
-  la vostra presenza e di segnalarci eventuali
-  allergie, intolleranze o esigenze alimentari.
-  <br><br>
-  <strong style="font-weight: normal; color: #697467;">
-    Speriamo di festeggiare insieme a te.
-  </strong>
-  <br>
-  Ti chiediamo di farci sapere se potrai esserci entro il
-  <strong style="font-weight: normal; color: #a98c8e;">
-    28 febbraio 2027.
-  </strong>
-</p>
+        Per aiutarci a organizzare al meglio
+        questa giornata, vi chiediamo di confermare
+        la vostra presenza e di segnalarci eventuali
+        allergie, intolleranze o esigenze alimentari.
+        <br><br>
+
+        <strong style="font-weight: normal; color: #697467;">
+          Speriamo di festeggiare insieme a te.
+        </strong>
+
+        <br>
+
+        Ti chiediamo di farci sapere se potrai esserci entro il
+
+        <strong style="font-weight: normal; color: #a98c8e;">
+          28 febbraio 2027.
+        </strong>
+      </p>
 
       <a
         class="button"
@@ -862,12 +1011,6 @@ will-change: transform;
         <div class="iban-label">
           IBAN
         </div>
-
-        <!--
-        IMPORTANTE:
-        SOSTITUISCI SOLO IL TESTO QUI SOTTO
-        CON IL TUO VERO IBAN
-        -->
 
         <div id="iban">
           IT12R0329601601000067772476
@@ -985,19 +1128,14 @@ video.addEventListener("ended", () => {
 
 /* ================= COUNTDOWN ================= */
 
-/*
-  Matrimonio:
-  15 maggio 2027
-  ore 11:00
-  ora italiana
-*/
-
-const weddingDate = new Date("2027-05-15T11:00:00+02:00");
+const weddingDate =
+  new Date("2027-05-15T11:00:00+02:00");
 
 function updateCountdown() {
 
   const now = new Date();
-  let distance = weddingDate.getTime() - now.getTime();
+  let distance =
+    weddingDate.getTime() - now.getTime();
 
   if (distance <= 0) {
 
@@ -1009,19 +1147,25 @@ function updateCountdown() {
     return;
   }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const days =
+    Math.floor(
+      distance / (1000 * 60 * 60 * 24)
+    );
 
-  const hours = Math.floor(
-    (distance / (1000 * 60 * 60)) % 24
-  );
+  const hours =
+    Math.floor(
+      (distance / (1000 * 60 * 60)) % 24
+    );
 
-  const minutes = Math.floor(
-    (distance / (1000 * 60)) % 60
-  );
+  const minutes =
+    Math.floor(
+      (distance / (1000 * 60)) % 60
+    );
 
-  const seconds = Math.floor(
-    (distance / 1000) % 60
-  );
+  const seconds =
+    Math.floor(
+      (distance / 1000) % 60
+    );
 
   document.getElementById("days").textContent =
     String(days).padStart(3, "0");
@@ -1043,9 +1187,14 @@ setInterval(updateCountdown, 1000);
 
 /* ================= COPIA IBAN ================= */
 
-const copyButton = document.getElementById("copyIban");
-const iban = document.getElementById("iban");
-const feedback = document.getElementById("copyFeedback");
+const copyButton =
+  document.getElementById("copyIban");
+
+const iban =
+  document.getElementById("iban");
+
+const feedback =
+  document.getElementById("copyFeedback");
 
 copyButton.addEventListener("click", async () => {
 
@@ -1064,14 +1213,11 @@ copyButton.addEventListener("click", async () => {
 
   } catch (error) {
 
-    /*
-      Fallback per alcuni browser
-      o dispositivi più vecchi.
-    */
-
-    const textArea = document.createElement("textarea");
+    const textArea =
+      document.createElement("textarea");
 
     textArea.value = ibanText;
+
     document.body.appendChild(textArea);
 
     textArea.select();
@@ -1085,71 +1231,108 @@ copyButton.addEventListener("click", async () => {
     setTimeout(() => {
       feedback.classList.remove("show");
     }, 2200);
+
   }
 });
 
+
 /* ================= ANIMAZIONI ALLO SCROLL ================= */
 
-const revealElements = document.querySelectorAll(
-  "#weddingContent .inner"
-);
+const revealElements =
+  document.querySelectorAll(
+    "#weddingContent .inner"
+  );
 
 revealElements.forEach((element) => {
   element.classList.add("reveal");
 });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.18
-  }
-);
+const revealObserver =
+  new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add("visible");
+
+          revealObserver.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.18
+    }
+  );
 
 revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
-  /* ================= MOVIMENTO DELICATO FIORI ================= */
 
-const floralElements = document.querySelectorAll(".floral");
+
+/* ================= MOVIMENTO DELICATO FIORI ================= */
+
+const floralElements =
+  document.querySelectorAll(".floral");
 
 function moveFlorals() {
 
   floralElements.forEach((flower) => {
 
-    const section = flower.closest(".section");
+    const section =
+      flower.closest(".section");
+
     if (!section) return;
 
-    const rect = section.getBoundingClientRect();
+    const rect =
+      section.getBoundingClientRect();
 
     const progress =
-      (window.innerHeight / 2 - (rect.top + rect.height / 2))
+      (
+        window.innerHeight / 2 -
+        (rect.top + rect.height / 2)
+      )
       / window.innerHeight;
 
-    const movement = Math.max(-1, Math.min(1, progress)) * 14;
+    const movement =
+      Math.max(
+        -1,
+        Math.min(1, progress)
+      ) * 14;
 
     if (
       flower.classList.contains("top-left") ||
       flower.classList.contains("small-left")
     ) {
-      flower.style.transform = `translateY(${movement}px)`;
+
+      flower.style.transform =
+        `translateY(${movement}px)`;
+
     } else {
-      flower.style.transform = `translateY(${-movement}px)`;
+
+      flower.style.transform =
+        `translateY(${-movement}px)`;
+
     }
 
   });
 
 }
 
-window.addEventListener("scroll", moveFlorals, { passive: true });
+window.addEventListener(
+  "scroll",
+  moveFlorals,
+  { passive: true }
+);
 
 moveFlorals();
+
 </script>
 
 </body>
