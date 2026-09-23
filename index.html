@@ -131,6 +131,8 @@ body {
   background-repeat: no-repeat;
   background-size: 700px auto;
   opacity: .33;
+transition: transform 0.15s linear;
+will-change: transform;
 }
 
 .floral.top-left {
@@ -1113,6 +1115,41 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
+  /* ================= MOVIMENTO DELICATO FIORI ================= */
+
+const floralElements = document.querySelectorAll(".floral");
+
+function moveFlorals() {
+
+  floralElements.forEach((flower) => {
+
+    const section = flower.closest(".section");
+    if (!section) return;
+
+    const rect = section.getBoundingClientRect();
+
+    const progress =
+      (window.innerHeight / 2 - (rect.top + rect.height / 2))
+      / window.innerHeight;
+
+    const movement = Math.max(-1, Math.min(1, progress)) * 14;
+
+    if (
+      flower.classList.contains("top-left") ||
+      flower.classList.contains("small-left")
+    ) {
+      flower.style.transform = `translateY(${movement}px)`;
+    } else {
+      flower.style.transform = `translateY(${-movement}px)`;
+    }
+
+  });
+
+}
+
+window.addEventListener("scroll", moveFlorals, { passive: true });
+
+moveFlorals();
 </script>
 
 </body>
