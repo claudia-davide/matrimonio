@@ -513,7 +513,27 @@ body {
   color: #a48f89;
 }
 
-/* ================= DESKTOP ================= */
+/* ================= ANIMAZIONI SCROLL ================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+  /* ================= DESKTOP ================= */
 
 @media (min-width: 700px) {
 
@@ -1066,6 +1086,33 @@ copyButton.addEventListener("click", async () => {
   }
 });
 
+/* ================= ANIMAZIONI ALLO SCROLL ================= */
+
+const revealElements = document.querySelectorAll(
+  "#weddingContent .inner"
+);
+
+revealElements.forEach((element) => {
+  element.classList.add("reveal");
+});
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.18
+  }
+);
+
+revealElements.forEach((element) => {
+  revealObserver.observe(element);
+});
 </script>
 
 </body>
