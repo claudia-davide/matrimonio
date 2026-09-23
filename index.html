@@ -28,7 +28,7 @@ body {
   overflow: hidden;
 }
 
-/* ================= INTRO ================= */
+/* ================= APERTURA ================= */
 
 #invitation {
   position: fixed;
@@ -89,7 +89,7 @@ body {
   pointer-events: none;
 }
 
-/* ================= PAGINA ================= */
+/* ================= CONTENUTO ================= */
 
 #weddingContent {
   opacity: 0;
@@ -167,37 +167,66 @@ body {
   opacity: .23;
 }
 
-/* ================= HERO ================= */
+/* ================= TESTI GENERALI ================= */
 
-.hero {
-  background:
-    radial-gradient(circle at 50% 40%,
-      rgba(255,255,255,.9),
-      rgba(250,246,239,.72) 55%,
-      #faf6ef 100%);
+.eyebrow,
+.section-label {
+  font-size: 10px;
+  letter-spacing: .36em;
+  text-transform: uppercase;
+  color: #a98c8e;
 }
 
 .eyebrow {
-  font-size: 10px;
-  letter-spacing: .38em;
-  text-transform: uppercase;
-  color: #a18e88;
   margin-bottom: 30px;
 }
 
-.names {
+.section-label {
+  margin-bottom: 22px;
+}
+
+.names,
+.script-title {
   font-family: "Snell Roundhand", "Apple Chancery", cursive;
+  font-weight: 400;
+  color: #697467;
+}
+
+.names {
   font-size: clamp(50px, 14vw, 80px);
   line-height: 1;
-  font-weight: 400;
-  color: #687266;
   margin-bottom: 27px;
+}
+
+.script-title {
+  font-size: clamp(39px, 10vw, 58px);
+  line-height: 1.12;
+  margin-bottom: 22px;
 }
 
 .ornament {
   color: #d3adb3;
   font-size: 21px;
   margin-bottom: 27px;
+}
+
+.divider {
+  width: 65px;
+  height: 1px;
+  background: #d8bfc0;
+  margin: 31px auto;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(255,255,255,.9),
+      rgba(250,246,239,.72) 55%,
+      #faf6ef 100%
+    );
 }
 
 .intro {
@@ -244,11 +273,16 @@ body {
 }
 
 @keyframes float {
-  0%,100% { transform:translateX(-50%) translateY(0); }
-  50% { transform:translateX(-50%) translateY(7px); }
+  0%,100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(7px);
+  }
 }
 
-/* ================= EVENTI ================= */
+/* ================= CERIMONIA / RICEVIMENTO ================= */
 
 .event {
   background: #f7f1e9;
@@ -256,14 +290,6 @@ body {
 
 .event.reception {
   background: #fbf7f1;
-}
-
-.section-label {
-  font-size: 10px;
-  letter-spacing: .36em;
-  text-transform: uppercase;
-  color: #b28f91;
-  margin-bottom: 22px;
 }
 
 .event-icon {
@@ -277,15 +303,6 @@ body {
   justify-content: center;
   font-size: 20px;
   color: #7c8878;
-}
-
-.event h2 {
-  font-family: "Snell Roundhand", "Apple Chancery", cursive;
-  font-size: clamp(39px, 10vw, 58px);
-  font-weight: 400;
-  line-height: 1.12;
-  color: #697467;
-  margin-bottom: 22px;
 }
 
 .event-date {
@@ -311,35 +328,195 @@ body {
   color: #969087;
 }
 
-.divider {
-  width: 65px;
-  height: 1px;
-  background: #d8bfc0;
-  margin: 31px auto;
-}
+/* ================= PULSANTI ================= */
 
-.map-button {
+.button {
   display: inline-block;
   margin-top: 2px;
-  padding: 14px 25px;
+  padding: 15px 27px;
   border: 1px solid #aeb9aa;
   border-radius: 50px;
   color: #707c6d;
+  background: rgba(255,255,255,.25);
   text-decoration: none;
+  font-family: Georgia, serif;
   font-size: 10px;
-  letter-spacing: .2em;
+  letter-spacing: .20em;
   text-transform: uppercase;
+  cursor: pointer;
   transition: .25s ease;
 }
 
-.map-button:hover {
+.button:hover {
   background: #707c6d;
   color: #fff;
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown-section {
+  background: #f7f1e9;
+}
+
+.countdown-intro {
+  max-width: 390px;
+  margin: 0 auto 38px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #777970;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+  width: 100%;
+  max-width: 470px;
+  margin: 0 auto;
+}
+
+.count-box {
+  padding: 20px 5px 17px;
+  border: 1px solid rgba(173,184,169,.55);
+  border-radius: 16px;
+  background: rgba(255,255,255,.35);
+  backdrop-filter: blur(4px);
+}
+
+.count-number {
+  display: block;
+  font-size: clamp(25px, 7vw, 38px);
+  line-height: 1;
+  color: #6d796a;
+  font-variant-numeric: tabular-nums;
+}
+
+.count-label {
+  display: block;
+  margin-top: 10px;
+  font-size: 8px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: #a38e89;
+}
+
+.until {
+  margin-top: 35px;
+  font-size: 10px;
+  letter-spacing: .27em;
+  text-transform: uppercase;
+  color: #b09092;
+}
+
+/* ================= RSVP ================= */
+
+.rsvp {
+  background: #fbf7f1;
+}
+
+.body-copy {
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #777970;
+}
+
+.rsvp .button {
+  margin-top: 35px;
+  padding: 17px 30px;
+}
+
+/* ================= REGALO ================= */
+
+.gift {
+  background: #f7f1e9;
+}
+
+.gift-card {
+  width: 100%;
+  max-width: 440px;
+  margin: 35px auto 0;
+  padding: 31px 22px;
+  border: 1px solid rgba(174,185,170,.55);
+  border-radius: 22px;
+  background: rgba(255,255,255,.38);
+}
+
+.account-name {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #817d76;
+  margin-bottom: 21px;
+}
+
+.iban-label {
+  font-size: 9px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: #af9293;
+  margin-bottom: 10px;
+}
+
+#iban {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: .06em;
+  color: #626d60;
+  overflow-wrap: anywhere;
+  margin-bottom: 20px;
+}
+
+.copy-feedback {
+  height: 20px;
+  margin-top: 13px;
+  font-size: 11px;
+  color: #849080;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.copy-feedback.show {
+  opacity: 1;
+}
+
+.reason {
+  margin-top: 21px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #9a9189;
+}
+
+.reason strong {
+  font-weight: normal;
+  color: #797970;
+}
+
+/* ================= FINALE ================= */
+
+.final-section {
+  min-height: 75dvh;
+  background: #fbf7f1;
+}
+
+.final-heart {
+  color: #d2a8ae;
+  font-size: 22px;
+  margin: 25px 0;
+}
+
+.final-date {
+  font-size: 11px;
+  letter-spacing: .30em;
+  text-transform: uppercase;
+  color: #a48f89;
 }
 
 /* ================= DESKTOP ================= */
 
 @media (min-width: 700px) {
+
   .section {
     padding: 100px 50px;
   }
@@ -363,13 +540,20 @@ body {
 
 <body>
 
-<!-- APERTURA -->
+<!-- ======================================================
+     APERTURA ANIMATA
+====================================================== -->
 
 <main id="invitation">
 
   <div class="media-wrapper" id="mediaWrapper">
 
-    <video id="openingVideo" playsinline preload="auto" muted>
+    <video
+      id="openingVideo"
+      playsinline
+      preload="auto"
+      muted
+    >
       <source
         src="Ribbon_unties_and_envelope_opens_20260922224925.mp4"
         type="video/mp4">
@@ -385,7 +569,9 @@ body {
 </main>
 
 
-<!-- INVITO -->
+<!-- ======================================================
+     PARTECIPAZIONE
+====================================================== -->
 
 <main id="weddingContent">
 
@@ -445,11 +631,9 @@ body {
         La cerimonia
       </div>
 
-      <div class="event-icon">
-        ♡
-      </div>
+      <div class="event-icon">♡</div>
 
-      <h2>
+      <h2 class="script-title">
         Il nostro sì
       </h2>
 
@@ -468,7 +652,7 @@ body {
       <div class="divider"></div>
 
       <a
-        class="map-button"
+        class="button"
         href="https://www.google.com/maps/search/?api=1&query=Chiesa+di+San+Benedetto+Abate+Bertesinella+Vicenza"
         target="_blank"
         rel="noopener">
@@ -493,11 +677,9 @@ body {
         A seguire
       </div>
 
-      <div class="event-icon">
-        ❀
-      </div>
+      <div class="event-icon">❀</div>
 
-      <h2>
+      <h2 class="script-title">
         Festeggiamo insieme
       </h2>
 
@@ -513,7 +695,7 @@ body {
       <div class="divider"></div>
 
       <a
-        class="map-button"
+        class="button"
         href="https://www.google.com/maps/search/?api=1&query=Il+Faro+Via+Sega+50+Castione+TV"
         target="_blank"
         rel="noopener">
@@ -524,10 +706,205 @@ body {
 
   </section>
 
+
+  <!-- COUNTDOWN -->
+
+  <section class="section countdown-section">
+
+    <div class="floral small-right"></div>
+    <div class="floral small-left"></div>
+
+    <div class="inner">
+
+      <div class="section-label">
+        Il conto alla rovescia
+      </div>
+
+      <h2 class="script-title">
+        Manca sempre meno
+      </h2>
+
+      <p class="countdown-intro">
+        Non vediamo l'ora di vivere
+        questo giorno insieme a voi.
+      </p>
+
+      <div class="countdown">
+
+        <div class="count-box">
+          <span class="count-number" id="days">000</span>
+          <span class="count-label">Giorni</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="hours">00</span>
+          <span class="count-label">Ore</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="minutes">00</span>
+          <span class="count-label">Min</span>
+        </div>
+
+        <div class="count-box">
+          <span class="count-number" id="seconds">00</span>
+          <span class="count-label">Sec</span>
+        </div>
+
+      </div>
+
+      <div class="until">
+        Al nostro sì
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RSVP -->
+
+  <section class="section rsvp">
+
+    <div class="floral top-left"></div>
+    <div class="floral bottom-right"></div>
+
+    <div class="inner">
+
+      <div class="section-label">
+        Ci sarete?
+      </div>
+
+      <h2 class="script-title">
+        Fateci sapere
+      </h2>
+
+      <p class="body-copy">
+        Per aiutarci a organizzare al meglio
+        questa giornata, vi chiediamo di confermare
+        la vostra presenza e di segnalarci eventuali
+        allergie, intolleranze o esigenze alimentari.
+      </p>
+
+      <a
+        class="button"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfKKsXK0qdsL8SBoRszDGS8pulM72gPN-39i7WY2WeOjHKzaw/viewform?usp=publish-editor"
+        target="_blank"
+        rel="noopener">
+        Conferma la presenza
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- REGALO -->
+
+  <section class="section gift">
+
+    <div class="floral small-right"></div>
+    <div class="floral small-left"></div>
+
+    <div class="inner">
+
+      <div class="section-label">
+        Un pensiero per noi
+      </div>
+
+      <h2 class="script-title">
+        Il regalo più bello
+      </h2>
+
+      <p class="body-copy">
+        La vostra presenza sarà già il regalo più bello.
+        Se desiderate comunque farci un pensiero,
+        potrete contribuire ai nostri progetti futuri.
+      </p>
+
+      <div class="gift-card">
+
+        <p class="account-name">
+          Davide Milani &amp; Claudia Michelotto
+        </p>
+
+        <div class="iban-label">
+          IBAN
+        </div>
+
+        <!--
+        IMPORTANTE:
+        SOSTITUISCI SOLO IL TESTO QUI SOTTO
+        CON IL TUO VERO IBAN
+        -->
+
+        <div id="iban">
+          IT12R0329601601000067772476
+        </div>
+
+        <button
+          type="button"
+          class="button"
+          id="copyIban">
+          Copia IBAN
+        </button>
+
+        <div
+          class="copy-feedback"
+          id="copyFeedback">
+          IBAN copiato ✓
+        </div>
+
+        <p class="reason">
+          Causale suggerita:<br>
+          <strong>
+            Regalo matrimonio Claudia e Davide
+          </strong>
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CHIUSURA -->
+
+  <section class="section final-section">
+
+    <div class="floral top-left"></div>
+    <div class="floral bottom-right"></div>
+
+    <div class="inner">
+
+      <div class="section-label">
+        Vi aspettiamo
+      </div>
+
+      <h2 class="names">
+        Claudia &amp; Davide
+      </h2>
+
+      <div class="final-heart">
+        ♡
+      </div>
+
+      <div class="final-date">
+        15 · 05 · 2027
+      </div>
+
+    </div>
+
+  </section>
+
 </main>
 
 
 <script>
+
+/* ================= APERTURA ================= */
+
 const wrapper = document.getElementById("mediaWrapper");
 const cover = document.getElementById("cover");
 const video = document.getElementById("openingVideo");
@@ -573,6 +950,113 @@ video.addEventListener("ended", () => {
   }, 1000);
 
 });
+
+
+/* ================= COUNTDOWN ================= */
+
+/*
+  Matrimonio:
+  15 maggio 2027
+  ore 11:00
+  ora italiana
+*/
+
+const weddingDate = new Date("2027-05-15T11:00:00+02:00");
+
+function updateCountdown() {
+
+  const now = new Date();
+  let distance = weddingDate.getTime() - now.getTime();
+
+  if (distance <= 0) {
+
+    document.getElementById("days").textContent = "0";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  const hours = Math.floor(
+    (distance / (1000 * 60 * 60)) % 24
+  );
+
+  const minutes = Math.floor(
+    (distance / (1000 * 60)) % 60
+  );
+
+  const seconds = Math.floor(
+    (distance / 1000) % 60
+  );
+
+  document.getElementById("days").textContent =
+    String(days).padStart(3, "0");
+
+  document.getElementById("hours").textContent =
+    String(hours).padStart(2, "0");
+
+  document.getElementById("minutes").textContent =
+    String(minutes).padStart(2, "0");
+
+  document.getElementById("seconds").textContent =
+    String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
+
+
+/* ================= COPIA IBAN ================= */
+
+const copyButton = document.getElementById("copyIban");
+const iban = document.getElementById("iban");
+const feedback = document.getElementById("copyFeedback");
+
+copyButton.addEventListener("click", async () => {
+
+  const ibanText =
+    iban.textContent.replace(/\s+/g, "");
+
+  try {
+
+    await navigator.clipboard.writeText(ibanText);
+
+    feedback.classList.add("show");
+
+    setTimeout(() => {
+      feedback.classList.remove("show");
+    }, 2200);
+
+  } catch (error) {
+
+    /*
+      Fallback per alcuni browser
+      o dispositivi più vecchi.
+    */
+
+    const textArea = document.createElement("textarea");
+
+    textArea.value = ibanText;
+    document.body.appendChild(textArea);
+
+    textArea.select();
+
+    document.execCommand("copy");
+
+    textArea.remove();
+
+    feedback.classList.add("show");
+
+    setTimeout(() => {
+      feedback.classList.remove("show");
+    }, 2200);
+  }
+});
+
 </script>
 
 </body>
